@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кафе Ял — восточная кухня в Актаныше</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Georgia', serif;
+  color: #1a1a1a;
+  background: #f0e6d0;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+a { color: inherit; text-decoration: none; }
+
+/* ===== Шапка ===== */
+.header {
+  background: #1e3a2b; color: #d9c89a;
+  padding: 18px 0; position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+.header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+.logo { display: flex; align-items: center; gap: 10px; font-size: 22px; font-weight: bold; letter-spacing: 2px; }
+.logo svg { flex-shrink: 0; }
+.nav { display: flex; gap: 25px; flex-wrap: wrap; }
+.nav a { transition: color 0.3s; }
+.nav a:hover { color: #fff; }
+.phone { font-weight: bold; border-bottom: 1px dashed #d9c89a; }
+
+/* ===== Главный экран ===== */
+.hero {
+  background: linear-gradient(135deg, #1e3a2b 0%, #2d5540 100%);
+  color: #f0e6d0; padding: 120px 0; text-align: center;
+  position: relative; overflow: hidden;
+}
+.hero .container { position: relative; z-index: 2; }
+
+.mandala-bg {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 900px; height: 900px;
+  transform: translate(-50%, -50%);
+  opacity: 0.08;
+  animation: spin 90s linear infinite;
+  pointer-events: none;
+}
+@keyframes spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.spice {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #d9c89a 0%, transparent 70%);
+  pointer-events: none;
+  animation: floatUp linear infinite;
+  opacity: 0.5;
+}
+@keyframes floatUp {
+  0%   { transform: translateY(0) scale(1); opacity: 0; }
+  10%  { opacity: 0.6; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-200px) scale(0.5); opacity: 0; }
+}
+
+.hero h1 { font-size: 60px; margin-bottom: 20px; letter-spacing: 2px; line-height: 1.2; }
+.hero h1 .accent {
+  background: linear-gradient(90deg, #d9c89a, #fff5c9, #d9c89a);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+@keyframes shimmer {
+  to { background-position: -200% center; }
+}
+.hero p { font-size: 20px; max-width: 700px; margin: 0 auto 40px; opacity: 0.9; }
+.hero-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+
+.btn {
+  display: inline-block; padding: 15px 35px; border-radius: 50px;
+  font-size: 16px; font-weight: bold; cursor: pointer;
+  border: 2px solid transparent; transition: all 0.3s; font-family: inherit;
+}
+.btn-primary { background: #d9c89a; color: #1e3a2b; }
+.btn-primary:hover { background: #fff; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(217,200,154,0.4); }
+.btn-outline { border-color: #d9c89a; color: #d9c89a; background: transparent; }
+.btn-outline:hover { background: #d9c89a; color: #1e3a2b; transform: translateY(-3px); }
+
+/* ===== Разделитель ===== */
+.divider { display: flex; justify-content: center; align-items: center; gap: 20px; padding: 40px 0 20px; }
+.divider .line { height: 1px; width: 80px; background: linear-gradient(to right, transparent, #d9c89a, transparent); }
+.divider svg { flex-shrink: 0; }
+
+/* ===== Секции ===== */
+.section { padding: 60px 0 80px; }
+.section-dark { background: #1e3a2b; color: #f0e6d0; }
+.section-title { font-size: 42px; text-align: center; margin-bottom: 15px; letter-spacing: 3px; color: #1e3a2b; }
+.section-dark .section-title { color: #d9c89a; }
+.section-subtitle { text-align: center; color: #6a6a5a; margin-bottom: 50px; font-style: italic; font-size: 17px; }
+.section-dark .section-subtitle { color: #b6a882; }
+
+/* ===== Фон секции меню (кремовый с орнаментом) ===== */
+.section-menu {
+  background-color: #f0e6d0;
+  background-image:
+    radial-gradient(circle at 12% 20%, rgba(30,58,43,0.06) 0%, transparent 45%),
+    radial-gradient(circle at 88% 80%, rgba(217,200,154,0.28) 0%, transparent 45%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%231e3a2b' stroke-opacity='0.07' stroke-width='1'%3E%3Cpath d='M50 10 L56 24 L72 24 L60 36 L64 52 L50 42 L36 52 L40 36 L28 24 L44 24 Z'/%3E%3Ccircle cx='50' cy='50' r='4'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ===== Анимация появления ===== */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== Категории ===== */
+.categories { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
+.cat-btn {
+  padding: 10px 22px; border: 2px solid #1e3a2b; background: #f0e6d0;
+  color: #1e3a2b; border-radius: 50px; cursor: pointer;
+  font-family: inherit; font-size: 15px; transition: all 0.3s;
+}
+.cat-btn:hover, .cat-btn.active {
+  background: #1e3a2b; color: #d9c89a;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(30,58,43,0.2);
+}
+
+/* ===== Карточки меню ===== */
+.menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+.menu-card {
+  background: #fff; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 4px 20px rgba(30,58,43,0.12);
+  transition: transform 0.35s, box-shadow 0.35s;
+  display: flex; flex-direction: column; position: relative;
+}
+.menu-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 15px 40px rgba(30,58,43,0.25); }
+.menu-card-img {
+  height: 180px; background: linear-gradient(135deg, #1e3a2b, #2d5540);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 70px; position: relative; overflow: hidden;
+}
+.menu-card-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(217,200,154,0.15), transparent 60%);
+}
+.menu-card-badge {
+  position: absolute; top: 12px; right: 12px; z-index: 2;
+  background: #d9c89a; color: #1e3a2b;
+  min-width: 34px; height: 34px; border-radius: 50%;
+  display: none; align-items: center; justify-content: center;
+  font-weight: bold; font-size: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.menu-card-badge.show { display: flex; }
+
+.menu-card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+.menu-card-title { font-size: 20px; color: #1e3a2b; margin-bottom: 10px; }
+.menu-card-desc { font-size: 14px; color: #666; margin-bottom: 15px; flex: 1; }
+.menu-card-footer { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.menu-card-price { font-size: 22px; font-weight: bold; color: #1e3a2b; }
+
+.card-counter { display: flex; align-items: center; gap: 6px; }
+.counter-btn {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: #1e3a2b; color: #d9c89a;
+  border: none; font-size: 20px; font-weight: bold;
+  cursor: pointer; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.counter-btn:hover { background: #d9c89a; color: #1e3a2b; transform: scale(1.1); }
+.counter-value { min-width: 30px; text-align: center; font-weight: bold; font-size: 18px; color: #1e3a2b; }
+
+/* ===== О нас ===== */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.about-text h3 { font-size: 28px; color: #1e3a2b; margin-bottom: 20px; letter-spacing: 1px; }
+.about-text p { font-size: 17px; color: #4a4a3a; margin-bottom: 15px; line-height: 1.8; }
+.about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.stat-card {
+  background: #1e3a2b; color: #d9c89a;
+  padding: 30px 20px; border-radius: 16px; text-align: center;
+  transition: transform 0.3s;
+}
+.stat-card:hover { transform: translateY(-5px) rotate(-1deg); }
+.stat-number { font-size: 42px; font-weight: bold; color: #d9c89a; line-height: 1; margin-bottom: 8px; }
+.stat-label { font-size: 14px; opacity: 0.85; }
+
+/* ===== Доставка ===== */
+.delivery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+.delivery-card {
+  background: rgba(217, 200, 154, 0.08);
+  border: 1px solid #d9c89a;
+  border-radius: 16px; padding: 30px; text-align: center;
+  transition: all 0.3s;
+}
+.delivery-card:hover { background: rgba(217, 200, 154, 0.15); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(217,200,154,0.15); }
+.delivery-card h3 { color: #d9c89a; font-size: 22px; margin-bottom: 15px; }
+.delivery-card a { color: #d9c89a; border-bottom: 1px dashed #d9c89a; }
+
+/* ===== Отзывы ===== */
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+.review-card {
+  background: #fff; border-radius: 16px; padding: 30px;
+  box-shadow: 0 4px 20px rgba(30,58,43,0.08);
+  position: relative; transition: transform 0.3s;
+}
+.review-card:hover { transform: translateY(-5px); }
+.review-card::before {
+  content: '"'; position: absolute; top: 10px; left: 20px;
+  font-size: 80px; color: #d9c89a; font-family: Georgia, serif;
+  line-height: 1; opacity: 0.5;
+}
+.review-text { font-size: 15px; color: #4a4a3a; font-style: italic; margin-bottom: 20px; padding-top: 30px; line-height: 1.7; }
+.review-author { display: flex; align-items: center; gap: 12px; border-top: 1px solid #eee; padding-top: 15px; }
+.review-avatar {
+  width: 44px; height: 44px; background: #1e3a2b; color: #d9c89a;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: bold;
+}
+.review-name { font-weight: bold; color: #1e3a2b; }
+.review-stars { color: #d9c89a; font-size: 14px; letter-spacing: 2px; }
+
+/* ===== Форма бронирования ===== */
+.booking-form { max-width: 600px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.booking-form input {
+  padding: 15px 20px; border: 2px solid #1e3a2b; border-radius: 10px;
+  font-family: inherit; font-size: 16px; background: #fff;
+  transition: border-color 0.3s;
+}
+.booking-form input:focus { outline: none; border-color: #d9c89a; }
+.booking-form button { grid-column: 1 / -1; }
+.form-note { text-align: center; margin-top: 20px; color: #1e3a2b; font-weight: bold; }
+
+/* ===== Контакты ===== */
+#contacts p { font-size: 18px; margin-bottom: 12px; text-align: center; }
+#contacts a { color: #d9c89a; border-bottom: 1px dashed #d9c89a; }
+
+/* ===== Подвал ===== */
+.footer { background: #142a1e; color: #d9c89a; text-align: center; padding: 40px 0 30px; font-size: 14px; }
+
+/* ===== Корзина ===== */
+.cart-btn {
+  position: fixed; bottom: 25px; right: 25px; z-index: 200;
+  background: #d9c89a; color: #1e3a2b; border: none;
+  padding: 18px 25px; border-radius: 50px; cursor: pointer;
+  font-family: inherit; font-size: 16px; font-weight: bold;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+.cart-btn:hover { background: #fff; }
+.cart-btn.bump { animation: bump 0.4s; }
+@keyframes bump {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.cart-panel {
+  position: fixed; top: 0; right: -400px; width: 380px; height: 100vh;
+  background: #fff; box-shadow: -5px 0 30px rgba(0,0,0,0.2);
+  transition: right 0.3s; z-index: 300; display: flex; flex-direction: column;
+}
+.cart-panel.open { right: 0; }
+.cart-header {
+  background: #1e3a2b; color: #d9c89a; padding: 20px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.cart-header h3 { font-size: 20px; }
+.cart-close { background: none; border: none; color: #d9c89a; font-size: 24px; cursor: pointer; }
+.cart-items { flex: 1; overflow-y: auto; padding: 20px; }
+
+.cart-item { display: flex; flex-direction: column; padding: 14px 0; border-bottom: 1px solid #eee; gap: 8px; }
+.cart-item-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.cart-item-name { font-size: 15px; color: #1e3a2b; font-weight: bold; flex: 1; }
+.cart-item-remove { background: none; border: none; color: #c44; font-size: 20px; cursor: pointer; padding: 0 4px; }
+.cart-item-bottom { display: flex; justify-content: space-between; align-items: center; }
+.cart-item-controls { display: flex; align-items: center; gap: 8px; }
+.cart-item-controls .counter-btn { width: 28px; height: 28px; font-size: 16px; }
+.cart-item-controls .counter-value { font-size: 15px; min-width: 22px; }
+.cart-item-price { font-weight: bold; color: #1e3a2b; font-size: 16px; }
+
+.cart-empty { text-align: center; color: #999; padding: 40px 0; }
+.cart-footer { padding: 20px; border-top: 2px solid #1e3a2b; }
+.cart-total { font-size: 20px; font-weight: bold; margin-bottom: 15px; color: #1e3a2b; }
+.cart-footer .btn-primary { width: 100%; text-align: center; }
+
+.toast {
+  position: fixed; bottom: 100px; right: 25px; z-index: 250;
+  background: #1e3a2b; color: #d9c89a;
+  padding: 12px 20px; border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  font-size: 15px; opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s;
+  pointer-events: none;
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+
+/* ===== Адаптив ===== */
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; gap: 30px; }
+}
+@media (max-width: 768px) {
+  .hero { padding: 80px 0; }
+  .hero h1 { font-size: 34px; }
+  .hero p { font-size: 16px; }
+  .section-title { font-size: 28px; }
+  .header-inner { flex-direction: column; text-align: center; }
+  .nav { justify-content: center; gap: 15px; }
+  .booking-form { grid-template-columns: 1fr; }
+  .cart-panel { width: 100%; right: -100%; }
+  .cart-btn { padding: 14px 20px; font-size: 14px; bottom: 15px; right: 15px; }
+  .mandala-bg { width: 500px; height: 500px; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <div class="logo">
+      <svg width="42" height="42" viewBox="0 0 100 100">
+        <circle cx="50" cy="10" r="5" fill="#d9c89a"/>
+        <path d="M 22 48 A 28 28 0 0 1 78 48" fill="none" stroke="#d9c89a" stroke-width="5" stroke-linecap="round"/>
+        <line x1="10" y1="48" x2="90" y2="48" stroke="#d9c89a" stroke-width="5" stroke-linecap="round"/>
+        <path d="M 10 48 Q 25 48 35 62 Q 25 76 10 76" fill="none" stroke="#d9c89a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 90 48 Q 75 48 65 62 Q 75 76 90 76" fill="none" stroke="#d9c89a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <polygon points="50,62 60,78 50,94 40,78" fill="none" stroke="#d9c89a" stroke-width="3" stroke-linejoin="round"/>
+        <polygon points="50,70 54,78 50,86 46,78" fill="#d9c89a"/>
+        <line x1="35" y1="78" x2="45" y2="78" stroke="#d9c89a" stroke-width="3" stroke-linecap="round"/>
+        <line x1="55" y1="78" x2="65" y2="78" stroke="#d9c89a" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <span>КАФЕ ЯЛ</span>
+    </div>
+    <nav class="nav">
+      <a href="#about">О нас</a>
+      <a href="#menu">Меню</a>
+      <a href="#delivery">Доставка</a>
+      <a href="#booking">Бронирование</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a href="tel:+79631247428" class="phone">+7 (963) 124-74-28</a>
+  </div>
+</header>
+
+<section class="hero">
+  <svg class="mandala-bg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="#d9c89a" stroke-width="0.5">
+      <circle cx="100" cy="100" r="95"/>
+      <circle cx="100" cy="100" r="75"/>
+      <circle cx="100" cy="100" r="55"/>
+      <circle cx="100" cy="100" r="35"/>
+      <g id="petals">
+        <path d="M100,20 Q110,50 100,80 Q90,50 100,20 Z"/>
+        <path d="M100,180 Q110,150 100,120 Q90,150 100,180 Z"/>
+        <path d="M20,100 Q50,90 80,100 Q50,110 20,100 Z"/>
+        <path d="M180,100 Q150,90 120,100 Q150,110 180,100 Z"/>
+      </g>
+      <g id="petals2" transform="rotate(45 100 100)">
+        <path d="M100,20 Q110,50 100,80 Q90,50 100,20 Z"/>
+        <path d="M100,180 Q110,150 100,120 Q90,150 100,180 Z"/>
+        <path d="M20,100 Q50,90 80,100 Q50,110 20,100 Z"/>
+        <path d="M180,100 Q150,90 120,100 Q150,110 180,100 Z"/>
+      </g>
+      <g id="petals3" transform="rotate(22.5 100 100)">
+        <path d="M100,20 Q110,50 100,80 Q90,50 100,20 Z"/>
+        <path d="M100,180 Q110,150 100,120 Q90,150 100,180 Z"/>
+        <path d="M20,100 Q50,90 80,100 Q50,110 20,100 Z"/>
+        <path d="M180,100 Q150,90 120,100 Q150,110 180,100 Z"/>
+      </g>
+      <g id="petals4" transform="rotate(67.5 100 100)">
+        <path d="M100,20 Q110,50 100,80 Q90,50 100,20 Z"/>
+        <path d="M100,180 Q110,150 100,120 Q90,150 100,180 Z"/>
+        <path d="M20,100 Q50,90 80,100 Q50,110 20,100 Z"/>
+        <path d="M180,100 Q150,90 120,100 Q150,110 180,100 Z"/>
+      </g>
+    </g>
+  </svg>
+
+  <div class="container">
+    <h1>Восточная кухня<br><span class="accent">в Актаныше</span></h1>
+    <p>Роллы, пицца, шашлык, лагман и домашняя выпечка. Доставка по городу и самовывоз.</p>
+    <div class="hero-buttons">
+      <a href="#menu" class="btn btn-primary">Смотреть меню</a>
+      <a href="#delivery" class="btn btn-outline">Заказать доставку</a>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <div class="container">
+    <div class="divider reveal">
+      <span class="line"></span>
+      <svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,6 26,20 20,34 14,20" fill="none" stroke="#d9c89a" stroke-width="1.5"/><polygon points="20,12 23,20 20,28 17,20" fill="#d9c89a"/></svg>
+      <span class="line"></span>
+    </div>
+    <h2 class="section-title">О кафе «Ял»</h2>
+    <p class="section-subtitle">Восточное гостеприимство в самом сердце Актаныша</p>
+
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <h3>Готовим с душой — как дома</h3>
+        <p>«Ял» — это место, где восточные традиции встречаются с домашним уютом. Мы готовим по семейным рецептам: плов с говядиной, сочный шашлык на мангале, ароматный лагман и, конечно, роллы, которые полюбили наши гости.</p>
+        <p>Каждое утро мы замешиваем тесто для самсы и чебуреков, а вечером встречаем вас горячим чаем и свежей выпечкой. Приходите всей семьёй — у нас есть что-то для каждого.</p>
+      </div>
+      <div class="about-stats reveal">
+        <div class="stat-card"><div class="stat-number">80+</div><div class="stat-label">блюд в меню</div></div>
+        <div class="stat-card"><div class="stat-number">45</div><div class="stat-label">минут доставка</div></div>
+        <div class="stat-card"><div class="stat-number">100%</div><div class="stat-label">свежие продукты</div></div>
+        <div class="stat-card"><div class="stat-number">5★</div><div class="stat-label">отзывы гостей</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="menu" class="section section-menu">
+  <div class="container">
+    <div class="divider reveal">
+      <span class="line"></span>
+      <svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,6 26,20 20,34 14,20" fill="none" stroke="#d9c89a" stroke-width="1.5"/><polygon points="20,12 23,20 20,28 17,20" fill="#d9c89a"/></svg>
+      <span class="line"></span>
+    </div>
+    <h2 class="section-title">Наше меню</h2>
+    <p class="section-subtitle">Восточные блюда, роллы и пицца — выбирайте на свой вкус</p>
+
+    <div class="categories">
+      <button class="cat-btn active" data-cat="all">Всё</button>
+      <button class="cat-btn" data-cat="rolls">Роллы</button>
+      <button class="cat-btn" data-cat="sets">Сеты</button>
+      <button class="cat-btn" data-cat="pizza">Пицца</button>
+      <button class="cat-btn" data-cat="fastfood">Фастфуд</button>
+      <button class="cat-btn" data-cat="soups">Первые блюда</button>
+      <button class="cat-btn" data-cat="salads">Салаты</button>
+      <button class="cat-btn" data-cat="grill">Мангал и мясное</button>
+      <button class="cat-btn" data-cat="drinks">Напитки</button>
+      <button class="cat-btn" data-cat="bakery">Выпечка</button>
+    </div>
+    <div class="menu-grid" id="menuGrid"></div>
+  </div>
+</section>
+
+<section class="section" style="background:#f7f1e3;">
+  <div class="container">
+    <div class="divider reveal">
+      <span class="line"></span>
+      <svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,6 26,20 20,34 14,20" fill="none" stroke="#d9c89a" stroke-width="1.5"/><polygon points="20,12 23,20 20,28 17,20" fill="#d9c89a"/></svg>
+      <span class="line"></span>
+    </div>
+    <h2 class="section-title">Отзывы гостей</h2>
+    <p class="section-subtitle">Что говорят о нас наши посетители</p>
+
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <p class="review-text">Лучший лагман в Актаныше! Заказываем всей семьёй каждую неделю. Очень вкусно и по-домашнему.</p>
+        <div class="review-author"><div class="review-avatar">А</div><div><div class="review-name">Алия</div><div class="review-stars">★★★★★</div></div></div>
+      </div>
+      <div class="review-card reveal">
+        <p class="review-text">Роллы свежие, пицца горячая, шашлык сочный. Доставили быстро, ещё и чай в подарок приложили. Спасибо!</p>
+        <div class="review-author"><div class="review-avatar">Р</div><div><div class="review-name">Рустем</div><div class="review-stars">★★★★★</div></div></div>
+      </div>
+      <div class="review-card reveal">
+        <p class="review-text">Отмечали здесь юбилей — персонал помог всё организовать, атмосфера уютная. Самса и чебуреки просто волшебные!</p>
+        <div class="review-author"><div class="review-avatar">Г</div><div><div class="review-name">Гульнара</div><div class="review-stars">★★★★★</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="delivery" class="section section-dark">
+  <div class="container">
+    <div class="divider reveal">
+      <span class="line"></span>
+      <svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,6 26,20 20,34 14,20" fill="none" stroke="#d9c89a" stroke-width="1.5"/><polygon points="20,12 23,20 20,28 17,20" fill="#d9c89a"/></svg>
+      <span class="line"></span>
+    </div>
+    <h2 class="section-title">Доставка и самовывоз</h2>
+    <p class="section-subtitle">Привезём горячее прямо к вашему столу</p>
+
+    <div class="delivery-grid">
+      <div class="delivery-card reveal"><h3>🚚 Доставка по Актанышу</h3><p>Привезём заказ по адресу в течение 45–60 минут. Минимальная сумма — 500 ₽.</p></div>
+      <div class="delivery-card reveal"><h3>🏃 Самовывоз</h3><p>Заберите заказ сами: ул. Мусы Джалиля 7. Готово через 20 минут.</p></div>
+      <div class="delivery-card reveal"><h3>📞 Заказ по телефону</h3><p>Позвоните нам: <a href="tel:+79631247428">+7 (963) 124-74-28</a></p></div>
+    </div>
+  </div>
+</section>
+
+<section id="booking" class="section">
+  <div class="container">
+    <div class="divider reveal">
+      <span class="line"></span>
+      <svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,6 26,20 20,34 14,20" fill="none" stroke="#d9c89a" stroke-width="1.5"/><polygon points="20,12 23,20 20,28 17,20" fill="#d9c89a"/></svg>
+      <span class="line"></span>
+    </div>
+    <h2 class="section-title">Забронировать столик</h2>
+    <p class="section-subtitle">Оставьте заявку — мы перезвоним и подтвердим бронь</p>
+
+    <form class="booking-form reveal" id="bookingForm">
+      <input type="text" placeholder="Ваше имя" required>
+      <input type="tel" placeholder="Телефон" required>
+      <input type="date" required>
+      <input type="time" required>
+      <input type="number" placeholder="Гостей" min="1" max="20" required>
+      <button type="submit" class="btn btn-primary">Забронировать</button>
+    </form>
+    <p class="form-note" id="bookingNote"></p>
+  </div>
+</section>
+
+<section id="contacts" class="section section-dark">
+  <div class="container">
+    <div class="divider reveal">
+      <span class="line"></span>
+      <svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,6 26,20 20,34 14,20" fill="none" stroke="#d9c89a" stroke-width="1.5"/><polygon points="20,12 23,20 20,28 17,20" fill="#d9c89a"/></svg>
+      <span class="line"></span>
+    </div>
+    <h2 class="section-title">Контакты</h2>
+    <p>📍 ул. Мусы Джалиля 7, с. Актаныш</p>
+    <p>📞 <a href="tel:+79631247428">+7 (963) 124-74-28</a></p>
+    <p>🕐 Ежедневно с 10:00 до 23:00</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">© 2026 Кафе «Ял». Восточная кухня в Актаныше.</div>
+</footer>
+
+<button class="cart-btn" id="cartBtn">🛒 Корзина · <span id="cartCount">0</span> шт · <span id="cartBtnTotal">0</span> ₽</button>
+
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-header">
+    <h3>Ваш заказ</h3>
+    <button class="cart-close" id="cartClose">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <p class="cart-empty">Корзина пока пуста</p>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">Итого: <span id="cartTotal">0</span> ₽</div>
+    <button class="btn btn-primary" id="checkoutBtn">Оформить заказ</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const dishes = [
+  {cat:'rolls',name:'Калифорния',price:380,emoji:'🍣',desc:'Лосось, огурец, икра масаго, сливочный сыр'},
+  {cat:'rolls',name:'Вулкан',price:369,emoji:'🌋',desc:'Креветки, крабовые палочки, спайси соус'},
+  {cat:'rolls',name:'Цезарь',price:399,emoji:'🥗',desc:'Куриная грудка, салат, соус Цезарь'},
+  {cat:'rolls',name:'Филадельфия',price:379,emoji:'🐟',desc:'Лосось, сливочный сыр, огурец'},
+  {cat:'rolls',name:'Унаги-Маки',price:410,emoji:'🍣',desc:'Угорь, лосось, золотистая панировка'},
+  {cat:'rolls',name:'Банзай',price:350,emoji:'🍣',desc:'Копчёная курица, овощи, сливочный сыр'},
+  {cat:'rolls',name:'Венеция',price:380,emoji:'🍣',desc:'Копчёная курица, лосось, хрустящая панировка'},
+  {cat:'rolls',name:'Торнадо',price:378,emoji:'🌪',desc:'Креветки, сливочный сыр, кляр'},
+  {cat:'rolls',name:'Сёгун',price:390,emoji:'🍤',desc:'Креветки, сыр, томатная нотка'},
+  {cat:'rolls',name:'Чиотто',price:430,emoji:'🍣',desc:'Копчёная курица, лосось, кунжут'},
+  {cat:'rolls',name:'Феникс',price:400,emoji:'🦐',desc:'Авокадо, огурец, краб, розовый соус'},
+  {cat:'rolls',name:'Классические',price:180,emoji:'🍣',desc:'Курица, креветка или огурец'},
+  {cat:'sets',name:'Сет «Ял»',price:1480,emoji:'🍱',desc:'Калифорния, Филадельфия, Унаги-Маки, Венеция'},
+  {cat:'sets',name:'Сет «За Косарь»',price:1000,emoji:'🍱',desc:'Филадельфия, Цезарь, Класс. с креветкой'},
+  {cat:'sets',name:'Сет «Морской»',price:2000,emoji:'🍱',desc:'Чиотто, Торнадо, Сёгун, Вулкан, Феникс'},
+  {cat:'pizza',name:'Пепперони',price:395,emoji:'🍕',desc:'Пепперони, томатный соус, сыр'},
+  {cat:'pizza',name:'Цезарь',price:420,emoji:'🍕',desc:'Курица, салат, соус Цезарь'},
+  {cat:'pizza',name:'Ветчина и грибы',price:390,emoji:'🍕',desc:'Ветчина, шампиньоны, белый соус'},
+  {cat:'pizza',name:'Гавайская',price:390,emoji:'🍕',desc:'Ананас, курица, сыр'},
+  {cat:'pizza',name:'4 вкуса',price:415,emoji:'🍕',desc:'Разнообразие начинок в каждом кусочке'},
+  {cat:'pizza',name:'Ранч',price:300,emoji:'🍕',desc:'Курица, свежие овощи, соус ранч'},
+  {cat:'pizza',name:'Барбекю',price:300,emoji:'🍕',desc:'Курица, BBQ соус'},
+  {cat:'pizza',name:'Курица с грибами',price:400,emoji:'🍕',desc:'Курица, грибы, сливочный соус'},
+  {cat:'fastfood',name:'Шаурма',price:250,emoji:'🌯',desc:'Курица, овощи, два соуса, лаваш'},
+  {cat:'fastfood',name:'Бургер',price:250,emoji:'🍔',desc:'Куриная котлета, овощи, сыр'},
+  {cat:'fastfood',name:'Картофель по-деревенски',price:169,emoji:'🍟',desc:'Ароматный картофель со специями'},
+  {cat:'fastfood',name:'Картофель фри',price:169,emoji:'🍟',desc:'Золотистый, хрустящий'},
+  {cat:'fastfood',name:'Наггетсы (5 шт)',price:135,emoji:'🍗',desc:'Хрустящие кусочки курицы'},
+  {cat:'fastfood',name:'Мини-кыстыбый (3 шт)',price:80,emoji:'🥟',desc:'Лепёшка с картофельной начинкой'},
+  {cat:'fastfood',name:'Сосиски в кляре',price:120,emoji:'🌭',desc:'Классическая закуска'},
+  {cat:'fastfood',name:'Чебурек «Ял»',price:80,emoji:'🥟',desc:'Куриный фарш, фирменный соус'},
+  {cat:'soups',name:'Жаркое',price:500,emoji:'🍲',desc:'Томлёная говядина с овощами'},
+  {cat:'soups',name:'Пельмени детские',price:130,emoji:'🥟',desc:'Ароматный суп с курицей'},
+  {cat:'soups',name:'Лагман',price:300,emoji:'🍜',desc:'Домашняя лапша, мясо, овощи'},
+  {cat:'soups',name:'Хинкали',price:80,emoji:'🥟',desc:'Мешочки с мясным бульоном'},
+  {cat:'soups',name:'Пельмени Том Ям',price:500,emoji:'🍜',desc:'Конина, паста Том Ям'},
+  {cat:'soups',name:'Том Ям',price:500,emoji:'🍤',desc:'Креветки, кокосовое молоко'},
+  {cat:'soups',name:'Шурпа',price:250,emoji:'🍲',desc:'Восточный суп с мясом и овощами'},
+  {cat:'soups',name:'Солянка',price:260,emoji:'🍲',desc:'Мясной суп с копчёностями'},
+  {cat:'soups',name:'Пельмени из конины',price:150,emoji:'🥟',desc:'С мясом и овощами'},
+  {cat:'salads',name:'Мясной',price:170,emoji:'🥗',desc:'Говядина, овощи, нежная заправка'},
+  {cat:'salads',name:'Цезарь с курицей',price:330,emoji:'🥗',desc:'Айсберг, курица, гренки, пармезан'},
+  {cat:'salads',name:'Цезарь с креветками',price:390,emoji:'🥗',desc:'Лёгкий салат с морским акцентом'},
+  {cat:'salads',name:'Овощной',price:150,emoji:'🥗',desc:'Свежие сезонные овощи'},
+  {cat:'salads',name:'Гавайский',price:200,emoji:'🥗',desc:'Овощи, сыр, оливковое масло'},
+  {cat:'salads',name:'Греческий',price:230,emoji:'🥗',desc:'Курица, ананас, сыр'},
+  {cat:'grill',name:'Шашлык курица',price:139,emoji:'🍢',desc:'Сочный шашлык из курицы'},
+  {cat:'grill',name:'Шашлык индейка',price:220,emoji:'🍢',desc:'Нежный шашлык из индейки'},
+  {cat:'grill',name:'Шашлык баранина (мякоть)',price:200,emoji:'🍢',desc:'Ароматная баранина'},
+  {cat:'grill',name:'Шашлык баранина (корейка)',price:300,emoji:'🍢',desc:'Сочная корейка'},
+  {cat:'grill',name:'Шашлык конина',price:339,emoji:'🍢',desc:'Традиционный восточный шашлык'},
+  {cat:'grill',name:'Купаты',price:350,emoji:'🌭',desc:'Домашние колбаски'},
+  {cat:'grill',name:'Голень курицы',price:300,emoji:'🍗',desc:'Запечённая голень'},
+  {cat:'grill',name:'Отбивная курицы',price:350,emoji:'🍗',desc:'С хрустящей корочкой'},
+  {cat:'grill',name:'Крылышки',price:300,emoji:'🍗',desc:'С соусом на выбор'},
+  {cat:'grill',name:'Филе под овощами',price:380,emoji:'🍗',desc:'Куриное филе с овощами'},
+  {cat:'grill',name:'Плов',price:280,emoji:'🍛',desc:'С говядиной и специями'},
+  {cat:'grill',name:'Голубцы',price:250,emoji:'🥬',desc:'С мясом и рисом'},
+  {cat:'grill',name:'Рис',price:85,emoji:'🍚',desc:'Рассыпчатый рис'},
+  {cat:'grill',name:'Спагетти',price:75,emoji:'🍝',desc:'С томатным соусом'},
+  {cat:'grill',name:'Пюре',price:85,emoji:'🥔',desc:'Нежное картофельное пюре'},
+  {cat:'grill',name:'Гречка',price:85,emoji:'🍚',desc:'С маслом'},
+  {cat:'grill',name:'Макароны',price:75,emoji:'🍝',desc:'С сыром'},
+  {cat:'salads',name:'Сырная тарелка',price:400,emoji:'🧀',desc:'Ассорти сыров'},
+  {cat:'salads',name:'Мясная тарелка',price:500,emoji:'🥓',desc:'Ассорти мясных деликатесов'},
+  {cat:'salads',name:'Гренки',price:150,emoji:'🍞',desc:'С чесноком и специями'},
+  {cat:'salads',name:'Тарелка из деликатесов',price:600,emoji:'🥘',desc:'Мясо, сыр, мёд'},
+  {cat:'drinks',name:'Чай чёрный',price:50,emoji:'🍵',desc:'Ароматный чай'},
+  {cat:'drinks',name:'Чай зелёный',price:50,emoji:'🍵',desc:'Освежающий'},
+  {cat:'drinks',name:'Чай фруктовый',price:50,emoji:'🍵',desc:'С фруктами'},
+  {cat:'drinks',name:'Эспрессо',price:130,emoji:'☕',desc:'Крепкий кофе'},
+  {cat:'drinks',name:'Капучино',price:130,emoji:'☕',desc:'С молочной пенкой'},
+  {cat:'drinks',name:'Латте',price:130,emoji:'☕',desc:'Мягкий кофе с молоком'},
+  {cat:'bakery',name:'Чебурек «Ял»',price:80,emoji:'🥟',desc:'С куриным фаршем'},
+  {cat:'bakery',name:'Самса',price:80,emoji:'🥟',desc:'С мясом'},
+  {cat:'bakery',name:'Треугольник',price:80,emoji:'🥟',desc:'С картофелем'},
+  {cat:'bakery',name:'Мини-кыстыбый',price:80,emoji:'🥟',desc:'С картофелем'},
+];
+
+let cart = {};
+const menuGrid = document.getElementById('menuGrid');
+
+function cssEscape(str) {
+  return str.replace(/"/g, '\\"');
+}
+
+function renderMenu(cat = 'all') {
+  menuGrid.innerHTML = '';
+  const list = cat === 'all' ? dishes : dishes.filter(d => d.cat === cat);
+
+  list.forEach(dish => {
+    const card = document.createElement('div');
+    card.className = 'menu-card';
+    card.innerHTML = `
+      <div class="menu-card-img">
+        ${dish.emoji}
+        <span class="menu-card-badge" data-badge="${cssEscape(dish.name)}"></span>
+      </div>
+      <div class="menu-card-body">
+        <h3 class="menu-card-title">${dish.name}</h3>
+        <p class="menu-card-desc">${dish.desc}</p>
+        <div class="menu-card-footer">
+          <span class="menu-card-price">${dish.price} ₽</span>
+          <div class="card-counter">
+            <button class="counter-btn" data-action="minus" data-name="${cssEscape(dish.name)}">−</button>
+            <span class="counter-value" data-value="${cssEscape(dish.name)}">0</span>
+            <button class="counter-btn" data-action="plus" data-name="${cssEscape(dish.name)}">+</button>
+          </div>
+        </div>
+      </div>
+    `;
+    menuGrid.appendChild(card);
+  });
+
+  dishes.forEach(d => updateCardUI(d.name));
+}
+
+function updateCardUI(name) {
+  const qty = cart[name] ? cart[name].qty : 0;
+  const badge = document.querySelector(`[data-badge="${cssEscape(name)}"]`);
+  const value = document.querySelector(`[data-value="${cssEscape(name)}"]`);
+  if (badge) {
+    if (qty > 0) { badge.textContent = qty; badge.classList.add('show'); }
+    else { badge.classList.remove('show'); }
+  }
+  if (value) value.textContent = qty;
+}
+
+menuGrid.addEventListener('click', e => {
+  const btn = e.target.closest('[data-action]');
+  if (!btn) return;
+  const name = btn.dataset.name;
+  const action = btn.dataset.action;
+  const dish = dishes.find(d => d.name === name);
+  if (!dish) return;
+  if (action === 'plus') addToCart(dish);
+  if (action === 'minus') removeOne(name);
+});
+
+function addToCart(dish) {
+  if (cart[dish.name]) cart[dish.name].qty++;
+  else cart[dish.name] = { price: dish.price, qty: 1 };
+  updateCardUI(dish.name);
+  updateCart();
+  showToast(`✓ «${dish.name}» добавлен`);
+  bumpCartButton();
+}
+
+function removeOne(name) {
+  if (!cart[name]) return;
+  cart[name].qty--;
+  if (cart[name].qty <= 0) delete cart[name];
+  updateCardUI(name);
+  updateCart();
+}
+
+function removeAll(name) {
+  delete cart[name];
+  updateCardUI(name);
+  updateCart();
+}
+
+document.getElementById('cartBtn').addEventListener('click', () => {
+  document.getElementById('cartPanel').classList.add('open');
+});
+document.getElementById('cartClose').addEventListener('click', () => {
+  document.getElementById('cartPanel').classList.remove('open');
+});
+
+function updateCart() {
+  const entries = Object.entries(cart);
+  const count = entries.reduce((s, [, v]) => s + v.qty, 0);
+  const total = entries.reduce((s, [, v]) => s + v.price * v.qty, 0);
+
+  document.getElementById('cartCount').textContent = count;
+  document.getElementById('cartBtnTotal').textContent = total;
+  document.getElementById('cartTotal').textContent = total;
+
+  const itemsBox = document.getElementById('cartItems');
+  if (entries.length === 0) {
+    itemsBox.innerHTML = '<p class="cart-empty">Корзина пока пуста</p>';
+    return;
+  }
+  itemsBox.innerHTML = entries.map(([name, item]) => `
+    <div class="cart-item">
+      <div class="cart-item-top">
+        <span class="cart-item-name">${name}</span>
+        <button class="cart-item-remove" data-remove="${cssEscape(name)}">✕</button>
+      </div>
+      <div class="cart-item-bottom">
+        <div class="cart-item-controls">
+          <button class="counter-btn" data-cart-minus="${cssEscape(name)}">−</button>
+          <span class="counter-value">${item.qty}</span>
+          <button class="counter-btn" data-cart-plus="${cssEscape(name)}">+</button>
+        </div>
+        <span class="cart-item-price">${item.price * item.qty} ₽</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+document.getElementById('cartItems').addEventListener('click', e => {
+  const removeBtn = e.target.closest('[data-remove]');
+  if (removeBtn) { removeAll(removeBtn.dataset.remove); return; }
+  const plusBtn = e.target.closest('[data-cart-plus]');
+  if (plusBtn) {
+    const dish = dishes.find(d => d.name === plusBtn.dataset.cartPlus);
+    if (dish) addToCart(dish);
+    return;
+  }
+  const minusBtn = e.target.closest('[data-cart-minus]');
+  if (minusBtn) { removeOne(minusBtn.dataset.cartMinus); return; }
+});
+
+let toastTimer;
+function showToast(text) {
+  const toast = document.getElementById('toast');
+  toast.textContent = text;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 1600);
+}
+
+function bumpCartButton() {
+  const btn = document.getElementById('cartBtn');
+  btn.classList.remove('bump');
+  void btn.offsetWidth;
+  btn.classList.add('bump');
+}
+
+document.getElementById('checkoutBtn').addEventListener('click', () => {
+  const entries = Object.entries(cart);
+  if (entries.length === 0) { alert('Корзина пуста'); return; }
+  const total = entries.reduce((s, [, v]) => s + v.price * v.qty, 0);
+  const list = entries.map(([n, v]) => `${n} × ${v.qty} = ${v.price * v.qty} ₽`).join('\n');
+  alert(`Ваш заказ:\n\n${list}\n\nИтого: ${total} ₽\n\nМы свяжемся с вами для подтверждения.`);
+  cart = {};
+  dishes.forEach(d => updateCardUI(d.name));
+  updateCart();
+  document.getElementById('cartPanel').classList.remove('open');
+});
+
+document.querySelectorAll('.cat-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderMenu(btn.dataset.cat);
+  });
+});
+
+document.getElementById('bookingForm').addEventListener('submit', e => {
+  e.preventDefault();
+  document.getElementById('bookingNote').textContent =
+    '✅ Спасибо! Мы свяжемся с вами для подтверждения брони.';
+  e.target.reset();
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+(function createSpices() {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+  const colors = ['#d9c89a', '#fff5c9', '#b6a882', '#e8d9ae'];
+  for (let i = 0; i < 18; i++) {
+    const s = document.createElement('div');
+    s.className = 'spice';
+    const size = 4 + Math.random() * 8;
+    s.style.width = size + 'px';
+    s.style.height = size + 'px';
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = (60 + Math.random() * 40) + '%';
+    s.style.background = `radial-gradient(circle, ${colors[Math.floor(Math.random()*colors.length)]} 0%, transparent 70%)`;
+    s.style.animationDuration = (8 + Math.random() * 12) + 's';
+    s.style.animationDelay = (Math.random() * 10) + 's';
+    hero.appendChild(s);
+  }
+})();
+
+renderMenu();
+updateCart();
+</script>
+</body>
+</html>

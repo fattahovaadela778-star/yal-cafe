@@ -5,320 +5,263 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Кафе Ял — восточная кухня в Актаныше</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'Georgia', serif;
-  color: #1a1a1a;
-  background: #f0e6d0;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-a { color: inherit; text-decoration: none; }
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+section[id]{scroll-margin-top:100px}
+body{font-family:'Georgia',serif;color:#1a1a1a;background:#f0e6d0;line-height:1.6;overflow-x:hidden}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+a{color:inherit;text-decoration:none}
 
 /* ===== Шапка ===== */
-.header {
-  background: #1e3a2b; color: #d9c89a;
-  padding: 18px 0; position: sticky; top: 0; z-index: 100;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
-.header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
-.logo { display: flex; align-items: center; gap: 10px; font-size: 22px; font-weight: bold; letter-spacing: 2px; }
-.logo svg { flex-shrink: 0; }
-.nav { display: flex; gap: 25px; flex-wrap: wrap; }
-.nav a { transition: color 0.3s; }
-.nav a:hover { color: #fff; }
-.phone { font-weight: bold; border-bottom: 1px dashed #d9c89a; }
+.header{background:#1e3a2b;color:#d9c89a;padding:18px 0;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,0.3)}
+.header-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
+.logo{font-size:30px;font-weight:bold;letter-spacing:4px;color:#d9c89a;text-shadow:0 0 20px rgba(217,200,154,0.4);font-family:Georgia,serif}
+.nav{display:flex;gap:18px;flex-wrap:wrap}
+.nav a{transition:color 0.3s;cursor:pointer}
+.nav a:hover{color:#fff}
+.phone{font-weight:bold;border-bottom:1px dashed #d9c89a}
 
-/* ===== Главный экран ===== */
-.hero {
-  background: linear-gradient(135deg, #1e3a2b 0%, #2d5540 100%);
-  color: #f0e6d0; padding: 120px 0; text-align: center;
-  position: relative; overflow: hidden;
-}
-.hero .container { position: relative; z-index: 2; }
+/* ===== Hero + анимации ===== */
+.hero{background:linear-gradient(135deg,#1e3a2b 0%,#2d5540 100%);color:#f0e6d0;padding:120px 0;text-align:center;position:relative;overflow:hidden}
+.hero .container{position:relative;z-index:2}
+.mandala-bg{position:absolute;top:50%;left:50%;width:900px;height:900px;transform:translate(-50%,-50%);opacity:0.08;animation:spin 90s linear infinite;pointer-events:none;z-index:1}
+@keyframes spin{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+.spice{position:absolute;border-radius:50%;background:radial-gradient(circle,#d9c89a 0%,transparent 70%);pointer-events:none;animation:floatUp linear infinite;opacity:0.5;z-index:1}
+@keyframes floatUp{0%{transform:translateY(0) scale(1);opacity:0}10%{opacity:0.6}90%{opacity:0.6}100%{transform:translateY(-200px) scale(0.5);opacity:0}}
+.hero h1{font-size:60px;margin-bottom:20px;letter-spacing:2px;line-height:1.2}
+.hero h1 .accent{background:linear-gradient(90deg,#d9c89a,#fff5c9,#d9c89a);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 3s linear infinite}
+@keyframes shimmer{to{background-position:-200% center}}
+.hero p{font-size:20px;max-width:700px;margin:0 auto 40px;opacity:0.9}
+.hero-buttons{display:flex;gap:15px;justify-content:center;flex-wrap:wrap}
 
-.mandala-bg {
-  position: absolute;
-  top: 50%; left: 50%;
-  width: 900px; height: 900px;
-  transform: translate(-50%, -50%);
-  opacity: 0.08;
-  animation: spin 90s linear infinite;
-  pointer-events: none;
-}
-@keyframes spin {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to   { transform: translate(-50%, -50%) rotate(360deg); }
-}
+.btn{display:inline-block;padding:15px 35px;border-radius:50px;font-size:16px;font-weight:bold;cursor:pointer;border:2px solid transparent;transition:all 0.3s;font-family:inherit}
+.btn-primary{background:#d9c89a;color:#1e3a2b}
+.btn-primary:hover{background:#fff;transform:translateY(-3px);box-shadow:0 8px 20px rgba(217,200,154,0.4)}
+.btn-outline{border-color:#d9c89a;color:#d9c89a;background:transparent}
+.btn-outline:hover{background:#d9c89a;color:#1e3a2b;transform:translateY(-3px)}
+.btn-big{padding:20px 45px;font-size:18px}
 
-.spice {
-  position: absolute;
-  border-radius: 50%;
-  background: radial-gradient(circle, #d9c89a 0%, transparent 70%);
-  pointer-events: none;
-  animation: floatUp linear infinite;
-  opacity: 0.5;
-}
-@keyframes floatUp {
-  0%   { transform: translateY(0) scale(1); opacity: 0; }
-  10%  { opacity: 0.6; }
-  90%  { opacity: 0.6; }
-  100% { transform: translateY(-200px) scale(0.5); opacity: 0; }
-}
+/* ===== Появление блоков при прокрутке ===== */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
 
-.hero h1 { font-size: 60px; margin-bottom: 20px; letter-spacing: 2px; line-height: 1.2; }
-.hero h1 .accent {
-  background: linear-gradient(90deg, #d9c89a, #fff5c9, #d9c89a);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer 3s linear infinite;
-}
-@keyframes shimmer {
-  to { background-position: -200% center; }
-}
-.hero p { font-size: 20px; max-width: 700px; margin: 0 auto 40px; opacity: 0.9; }
-.hero-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+.divider{display:flex;justify-content:center;align-items:center;gap:20px;padding:40px 0 20px}
+.divider .line{height:1px;width:80px;background:linear-gradient(to right,transparent,#d9c89a,transparent)}
 
-.btn {
-  display: inline-block; padding: 15px 35px; border-radius: 50px;
-  font-size: 16px; font-weight: bold; cursor: pointer;
-  border: 2px solid transparent; transition: all 0.3s; font-family: inherit;
-}
-.btn-primary { background: #d9c89a; color: #1e3a2b; }
-.btn-primary:hover { background: #fff; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(217,200,154,0.4); }
-.btn-outline { border-color: #d9c89a; color: #d9c89a; background: transparent; }
-.btn-outline:hover { background: #d9c89a; color: #1e3a2b; transform: translateY(-3px); }
+.section{padding:60px 0 80px}
+.section-dark{background:#1e3a2b;color:#f0e6d0}
+.section-title{font-size:42px;text-align:center;margin-bottom:15px;letter-spacing:3px;color:#1e3a2b}
+.section-dark .section-title{color:#d9c89a}
+.section-subtitle{text-align:center;color:#6a6a5a;margin-bottom:50px;font-style:italic;font-size:17px}
+.section-dark .section-subtitle{color:#b6a882}
+.section-menu{background-color:#f0e6d0;background-image:radial-gradient(circle at 12% 20%,rgba(30,58,43,0.06) 0%,transparent 45%),radial-gradient(circle at 88% 80%,rgba(217,200,154,0.28) 0%,transparent 45%)}
 
-/* ===== Разделитель ===== */
-.divider { display: flex; justify-content: center; align-items: center; gap: 20px; padding: 40px 0 20px; }
-.divider .line { height: 1px; width: 80px; background: linear-gradient(to right, transparent, #d9c89a, transparent); }
-.divider svg { flex-shrink: 0; }
+.categories{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:40px}
+.cat-btn{padding:10px 22px;border:2px solid #1e3a2b;background:#f0e6d0;color:#1e3a2b;border-radius:50px;cursor:pointer;font-family:inherit;font-size:15px;transition:all 0.3s}
+.cat-btn:hover,.cat-btn.active{background:#1e3a2b;color:#d9c89a;transform:translateY(-2px);box-shadow:0 5px 15px rgba(30,58,43,0.2)}
 
-/* ===== Секции ===== */
-.section { padding: 60px 0 80px; }
-.section-dark { background: #1e3a2b; color: #f0e6d0; }
-.section-title { font-size: 42px; text-align: center; margin-bottom: 15px; letter-spacing: 3px; color: #1e3a2b; }
-.section-dark .section-title { color: #d9c89a; }
-.section-subtitle { text-align: center; color: #6a6a5a; margin-bottom: 50px; font-style: italic; font-size: 17px; }
-.section-dark .section-subtitle { color: #b6a882; }
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:25px}
+.menu-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(30,58,43,0.12);transition:transform 0.35s,box-shadow 0.35s;display:flex;flex-direction:column;position:relative}
+.menu-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 15px 40px rgba(30,58,43,0.25)}
+.menu-card-img{height:200px;position:relative;overflow:hidden;background:linear-gradient(135deg,#1e3a2b,#2d5540);display:flex;align-items:center;justify-content:center;font-size:70px;color:#d9c89a}
+.menu-card-img img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;display:block;z-index:2;transition:transform 0.5s ease}
+.menu-card:hover .menu-card-img img{transform:scale(1.08)}
+.menu-card-badge{position:absolute;top:12px;right:12px;z-index:3;background:#d9c89a;color:#1e3a2b;min-width:34px;height:34px;border-radius:50%;display:none;align-items:center;justify-content:center;font-weight:bold;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.menu-card-badge.show{display:flex}
+.menu-card-body{padding:20px;flex:1;display:flex;flex-direction:column}
+.menu-card-title{font-size:20px;color:#1e3a2b;margin-bottom:10px}
+.menu-card-desc{font-size:14px;color:#666;margin-bottom:15px;flex:1}
+.menu-card-footer{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.menu-card-price{font-size:22px;font-weight:bold;color:#1e3a2b}
+.card-counter{display:flex;align-items:center;gap:6px}
+.counter-btn{width:34px;height:34px;border-radius:50%;background:#1e3a2b;color:#d9c89a;border:none;font-size:20px;font-weight:bold;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:inherit;transition:all 0.2s}
+.counter-btn:hover{background:#d9c89a;color:#1e3a2b;transform:scale(1.1)}
+.counter-value{min-width:30px;text-align:center;font-weight:bold;font-size:18px;color:#1e3a2b}
 
-/* ===== Фон секции меню (кремовый с орнаментом) ===== */
-.section-menu {
-  background-color: #f0e6d0;
-  background-image:
-    radial-gradient(circle at 12% 20%, rgba(30,58,43,0.06) 0%, transparent 45%),
-    radial-gradient(circle at 88% 80%, rgba(217,200,154,0.28) 0%, transparent 45%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%231e3a2b' stroke-opacity='0.07' stroke-width='1'%3E%3Cpath d='M50 10 L56 24 L72 24 L60 36 L64 52 L50 42 L36 52 L40 36 L28 24 L44 24 Z'/%3E%3Ccircle cx='50' cy='50' r='4'/%3E%3C/g%3E%3C/svg%3E");
-}
+/* ===== Мясная лавка ===== */
+.section-meat{background:linear-gradient(135deg,#142a1e 0%,#1e3a2b 60%,#2d5540 100%);color:#f0e6d0;padding:60px 0 80px;position:relative;overflow:hidden}
+.section-meat::before{content:'';position:absolute;inset:20px;border:1px solid rgba(217,200,154,0.25);border-radius:20px;pointer-events:none}
+.meat-frame{border:2px solid #d9c89a;border-radius:24px;padding:45px 30px;position:relative;background:rgba(217,200,154,0.03);box-shadow:0 0 60px rgba(217,200,154,0.08) inset}
+.meat-frame::before,.meat-frame::after{content:'✦';position:absolute;color:#d9c89a;font-size:20px;top:-14px;background:#1e3a2b;padding:0 10px;left:50%;transform:translateX(-50%)}
+.meat-frame::after{top:auto;bottom:-14px}
+.section-meat .section-title{color:#d9c89a}
+.section-meat .section-subtitle{color:#b6a882}
+.meat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:25px}
+.meat-card{background:rgba(20,42,30,0.6);border:1.5px solid rgba(217,200,154,0.35);border-radius:14px;padding:14px;display:flex;gap:14px;align-items:center;transition:all 0.3s}
+.meat-card:hover{border-color:#d9c89a;transform:translateY(-3px);box-shadow:0 10px 25px rgba(217,200,154,0.2)}
+.meat-img{width:72px;height:72px;border-radius:10px;overflow:hidden;background:#2d5540;flex-shrink:0;position:relative}
+.meat-img img{width:100%;height:100%;object-fit:cover;display:block}
+.meat-info{flex:1;min-width:0}
+.meat-name{font-size:15px;color:#d9c89a;font-weight:bold;margin-bottom:3px;line-height:1.25}
+.meat-desc{font-size:12px;color:#b6a882;margin-bottom:8px;line-height:1.4}
+.meat-bottom{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.meat-price{font-size:15px;font-weight:bold;color:#fff;white-space:nowrap}
+.meat-price small{font-size:11px;color:#b6a882;font-weight:normal}
+.meat-card .counter-btn{width:28px;height:28px;font-size:16px;background:#d9c89a;color:#1e3a2b}
+.meat-card .counter-btn:hover{background:#fff}
+.meat-card .counter-value{color:#d9c89a;font-size:14px;min-width:20px}
+.meat-note{text-align:center;font-size:13px;color:#b6a882;font-style:italic;margin-top:20px;padding-top:20px;border-top:1px dashed rgba(217,200,154,0.3)}
 
-/* ===== Анимация появления ===== */
-.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+/* ===== Выездная кухня ===== */
+.section-catering{background:linear-gradient(135deg,#142a1e 0%,#1e3a2b 50%,#2d5540 100%);color:#f0e6d0;padding:70px 0 80px}
+.section-catering .section-title{color:#d9c89a}
+.section-catering .section-subtitle{color:#b6a882}
+.catering-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-bottom:45px}
+.catering-card{background:rgba(217,200,154,0.08);border:1px solid rgba(217,200,154,0.35);border-radius:16px;padding:25px 20px;text-align:center;transition:all 0.3s}
+.catering-card:hover{background:rgba(217,200,154,0.15);transform:translateY(-5px);border-color:#d9c89a;box-shadow:0 12px 30px rgba(217,200,154,0.2)}
+.catering-icon{font-size:42px;margin-bottom:12px;line-height:1;display:block}
+.catering-card h3{color:#d9c89a;font-size:20px;margin-bottom:8px;letter-spacing:1px}
+.catering-card p{font-size:14px;color:#b6a882;line-height:1.5}
+.catering-info{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-bottom:40px}
+.catering-features{list-style:none}
+.catering-features li{padding:12px 0 12px 34px;position:relative;font-size:16px;color:#f0e6d0;border-bottom:1px dashed rgba(217,200,154,0.15)}
+.catering-features li:last-child{border-bottom:none}
+.catering-features li::before{content:'✓';position:absolute;left:0;top:11px;color:#d9c89a;font-weight:bold;font-size:20px}
+.catering-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.catering-stat{background:rgba(217,200,154,0.1);border:1px solid rgba(217,200,154,0.3);border-radius:14px;padding:22px 15px;text-align:center;transition:transform 0.3s}
+.catering-stat:hover{transform:translateY(-4px)}
+.catering-stat-num{font-size:22px;font-weight:bold;color:#d9c89a;margin-bottom:6px;line-height:1.15}
+.catering-stat-label{font-size:12px;color:#b6a882;line-height:1.3}
+.catering-cta{text-align:center;padding-top:20px;border-top:1px dashed rgba(217,200,154,0.25)}
+.catering-cta p{font-size:17px;color:#f0e6d0;margin-bottom:22px;font-style:italic}
 
-/* ===== Категории ===== */
-.categories { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
-.cat-btn {
-  padding: 10px 22px; border: 2px solid #1e3a2b; background: #f0e6d0;
-  color: #1e3a2b; border-radius: 50px; cursor: pointer;
-  font-family: inherit; font-size: 15px; transition: all 0.3s;
-}
-.cat-btn:hover, .cat-btn.active {
-  background: #1e3a2b; color: #d9c89a;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(30,58,43,0.2);
-}
-
-/* ===== Карточки меню ===== */
-.menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
-.menu-card {
-  background: #fff; border-radius: 16px; overflow: hidden;
-  box-shadow: 0 4px 20px rgba(30,58,43,0.12);
-  transition: transform 0.35s, box-shadow 0.35s;
-  display: flex; flex-direction: column; position: relative;
-}
-.menu-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 15px 40px rgba(30,58,43,0.25); }
-.menu-card-img {
-  height: 180px; background: linear-gradient(135deg, #1e3a2b, #2d5540);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 70px; position: relative; overflow: hidden;
-}
-.menu-card-img::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(circle at 30% 30%, rgba(217,200,154,0.15), transparent 60%);
-}
-.menu-card-badge {
-  position: absolute; top: 12px; right: 12px; z-index: 2;
-  background: #d9c89a; color: #1e3a2b;
-  min-width: 34px; height: 34px; border-radius: 50%;
-  display: none; align-items: center; justify-content: center;
-  font-weight: bold; font-size: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-}
-.menu-card-badge.show { display: flex; }
-
-.menu-card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
-.menu-card-title { font-size: 20px; color: #1e3a2b; margin-bottom: 10px; }
-.menu-card-desc { font-size: 14px; color: #666; margin-bottom: 15px; flex: 1; }
-.menu-card-footer { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
-.menu-card-price { font-size: 22px; font-weight: bold; color: #1e3a2b; }
-
-.card-counter { display: flex; align-items: center; gap: 6px; }
-.counter-btn {
-  width: 34px; height: 34px; border-radius: 50%;
-  background: #1e3a2b; color: #d9c89a;
-  border: none; font-size: 20px; font-weight: bold;
-  cursor: pointer; line-height: 1;
-  display: flex; align-items: center; justify-content: center;
-  transition: all 0.2s;
-}
-.counter-btn:hover { background: #d9c89a; color: #1e3a2b; transform: scale(1.1); }
-.counter-value { min-width: 30px; text-align: center; font-weight: bold; font-size: 18px; color: #1e3a2b; }
+/* ===== Бронирование ===== */
+.booking-actions{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin-bottom:25px}
+.booking-note{text-align:center;color:#6a6a5a;font-style:italic;font-size:15px;max-width:600px;margin:0 auto}
+.booking-hours{text-align:center;color:#1e3a2b;font-weight:bold;font-size:15px;margin-top:20px}
 
 /* ===== О нас ===== */
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-.about-text h3 { font-size: 28px; color: #1e3a2b; margin-bottom: 20px; letter-spacing: 1px; }
-.about-text p { font-size: 17px; color: #4a4a3a; margin-bottom: 15px; line-height: 1.8; }
-.about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.stat-card {
-  background: #1e3a2b; color: #d9c89a;
-  padding: 30px 20px; border-radius: 16px; text-align: center;
-  transition: transform 0.3s;
-}
-.stat-card:hover { transform: translateY(-5px) rotate(-1deg); }
-.stat-number { font-size: 42px; font-weight: bold; color: #d9c89a; line-height: 1; margin-bottom: 8px; }
-.stat-label { font-size: 14px; opacity: 0.85; }
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-text h3{font-size:28px;color:#1e3a2b;margin-bottom:20px}
+.about-text p{font-size:17px;color:#4a4a3a;margin-bottom:15px;line-height:1.8}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.stat-card{background:#1e3a2b;color:#d9c89a;padding:30px 20px;border-radius:16px;text-align:center;transition:transform 0.3s}
+.stat-card:hover{transform:translateY(-5px) rotate(-1deg)}
+.stat-number{font-size:42px;font-weight:bold;color:#d9c89a;line-height:1;margin-bottom:8px}
+.stat-label{font-size:14px;opacity:0.85}
 
 /* ===== Доставка ===== */
-.delivery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-.delivery-card {
-  background: rgba(217, 200, 154, 0.08);
-  border: 1px solid #d9c89a;
-  border-radius: 16px; padding: 30px; text-align: center;
-  transition: all 0.3s;
-}
-.delivery-card:hover { background: rgba(217, 200, 154, 0.15); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(217,200,154,0.15); }
-.delivery-card h3 { color: #d9c89a; font-size: 22px; margin-bottom: 15px; }
-.delivery-card a { color: #d9c89a; border-bottom: 1px dashed #d9c89a; }
+.delivery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px}
+.delivery-card{background:rgba(217,200,154,0.08);border:1px solid #d9c89a;border-radius:16px;padding:30px;text-align:center;transition:all 0.3s}
+.delivery-card:hover{background:rgba(217,200,154,0.15);transform:translateY(-5px);box-shadow:0 10px 30px rgba(217,200,154,0.15)}
+.delivery-card h3{color:#d9c89a;font-size:22px;margin-bottom:15px}
+.delivery-card a{color:#d9c89a;border-bottom:1px dashed #d9c89a}
+.delivery-card strong{color:#fff}
 
 /* ===== Отзывы ===== */
-.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-.review-card {
-  background: #fff; border-radius: 16px; padding: 30px;
-  box-shadow: 0 4px 20px rgba(30,58,43,0.08);
-  position: relative; transition: transform 0.3s;
-}
-.review-card:hover { transform: translateY(-5px); }
-.review-card::before {
-  content: '"'; position: absolute; top: 10px; left: 20px;
-  font-size: 80px; color: #d9c89a; font-family: Georgia, serif;
-  line-height: 1; opacity: 0.5;
-}
-.review-text { font-size: 15px; color: #4a4a3a; font-style: italic; margin-bottom: 20px; padding-top: 30px; line-height: 1.7; }
-.review-author { display: flex; align-items: center; gap: 12px; border-top: 1px solid #eee; padding-top: 15px; }
-.review-avatar {
-  width: 44px; height: 44px; background: #1e3a2b; color: #d9c89a;
-  border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  font-size: 18px; font-weight: bold;
-}
-.review-name { font-weight: bold; color: #1e3a2b; }
-.review-stars { color: #d9c89a; font-size: 14px; letter-spacing: 2px; }
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px}
+.review-card{background:#fff;border-radius:16px;padding:30px;box-shadow:0 4px 20px rgba(30,58,43,0.08);position:relative;transition:transform 0.3s}
+.review-card:hover{transform:translateY(-5px)}
+.review-card::before{content:'"';position:absolute;top:10px;left:20px;font-size:80px;color:#d9c89a;font-family:Georgia,serif;line-height:1;opacity:0.5}
+.review-text{font-size:15px;color:#4a4a3a;font-style:italic;margin-bottom:20px;padding-top:30px;line-height:1.7}
+.review-author{display:flex;align-items:center;gap:12px;border-top:1px solid #eee;padding-top:15px}
+.review-avatar{width:44px;height:44px;background:#1e3a2b;color:#d9c89a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:bold}
+.review-name{font-weight:bold;color:#1e3a2b}
+.review-stars{color:#d9c89a;font-size:14px;letter-spacing:2px}
 
-/* ===== Форма бронирования ===== */
-.booking-form { max-width: 600px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-.booking-form input {
-  padding: 15px 20px; border: 2px solid #1e3a2b; border-radius: 10px;
-  font-family: inherit; font-size: 16px; background: #fff;
-  transition: border-color 0.3s;
-}
-.booking-form input:focus { outline: none; border-color: #d9c89a; }
-.booking-form button { grid-column: 1 / -1; }
-.form-note { text-align: center; margin-top: 20px; color: #1e3a2b; font-weight: bold; }
-
-/* ===== Контакты ===== */
-#contacts p { font-size: 18px; margin-bottom: 12px; text-align: center; }
-#contacts a { color: #d9c89a; border-bottom: 1px dashed #d9c89a; }
-
-/* ===== Подвал ===== */
-.footer { background: #142a1e; color: #d9c89a; text-align: center; padding: 40px 0 30px; font-size: 14px; }
+#contacts p{font-size:18px;margin-bottom:12px;text-align:center}
+#contacts a{color:#d9c89a;border-bottom:1px dashed #d9c89a}
+.footer{background:#142a1e;color:#d9c89a;text-align:center;padding:40px 0;font-size:14px}
 
 /* ===== Корзина ===== */
-.cart-btn {
-  position: fixed; bottom: 25px; right: 25px; z-index: 200;
-  background: #d9c89a; color: #1e3a2b; border: none;
-  padding: 18px 25px; border-radius: 50px; cursor: pointer;
-  font-family: inherit; font-size: 16px; font-weight: bold;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-  transition: transform 0.2s;
-}
-.cart-btn:hover { background: #fff; }
-.cart-btn.bump { animation: bump 0.4s; }
-@keyframes bump {
-  0% { transform: scale(1); }
-  40% { transform: scale(1.15); }
-  100% { transform: scale(1); }
-}
+.cart-btn{position:fixed;bottom:25px;right:25px;z-index:200;background:#d9c89a;color:#1e3a2b;border:none;padding:18px 25px;border-radius:50px;cursor:pointer;font-family:inherit;font-size:16px;font-weight:bold;box-shadow:0 5px 20px rgba(0,0,0,0.3);transition:transform 0.2s}
+.cart-btn:hover{background:#fff}
+.cart-btn.bump{animation:bump 0.4s}
+@keyframes bump{0%{transform:scale(1)}40%{transform:scale(1.15)}100%{transform:scale(1)}}
 
-.cart-panel {
-  position: fixed; top: 0; right: -400px; width: 380px; height: 100vh;
-  background: #fff; box-shadow: -5px 0 30px rgba(0,0,0,0.2);
-  transition: right 0.3s; z-index: 300; display: flex; flex-direction: column;
-}
-.cart-panel.open { right: 0; }
-.cart-header {
-  background: #1e3a2b; color: #d9c89a; padding: 20px;
-  display: flex; justify-content: space-between; align-items: center;
-}
-.cart-header h3 { font-size: 20px; }
-.cart-close { background: none; border: none; color: #d9c89a; font-size: 24px; cursor: pointer; }
-.cart-items { flex: 1; overflow-y: auto; padding: 20px; }
+.cart-panel{position:fixed;top:0;right:-420px;width:400px;max-width:100%;height:100vh;background:#fff;transition:right 0.3s;z-index:300;display:flex;flex-direction:column;box-shadow:-5px 0 30px rgba(0,0,0,0.2)}
+.cart-panel.open{right:0}
+.cart-header{background:#1e3a2b;color:#d9c89a;padding:18px 20px;display:flex;justify-content:space-between;align-items:center}
+.cart-header h3{font-size:19px}
+.cart-close{background:none;border:none;color:#d9c89a;font-size:24px;cursor:pointer}
+.cart-body{flex:1;overflow-y:auto;padding:16px 20px}
+.cart-item{display:flex;flex-direction:column;padding:12px 0;border-bottom:1px solid #eee;gap:6px}
+.cart-item-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.cart-item-name{font-size:15px;color:#1e3a2b;font-weight:bold;flex:1}
+.cart-item-remove{background:none;border:none;color:#c44;font-size:20px;cursor:pointer;padding:0 4px}
+.cart-item-bottom{display:flex;justify-content:space-between;align-items:center}
+.cart-item-controls{display:flex;align-items:center;gap:8px}
+.cart-item-controls .counter-btn{width:28px;height:28px;font-size:16px}
+.cart-item-controls .counter-value{font-size:15px;min-width:22px}
+.cart-item-price{font-weight:bold;color:#1e3a2b;font-size:16px}
+.cart-empty{text-align:center;color:#999;padding:40px 0}
+.cart-checkout{padding:16px 20px;background:#faf6ec;border-top:1px dashed #d9c89a}
+.checkout-label{font-size:13px;font-weight:bold;color:#1e3a2b;margin-bottom:8px}
+.delivery-type{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:12px}
+.delivery-type-btn{padding:10px 4px;border:2px solid #1e3a2b;background:transparent;color:#1e3a2b;border-radius:10px;cursor:pointer;font-family:inherit;font-size:11px;font-weight:bold;transition:all 0.2s;text-align:center;line-height:1.2}
+.delivery-type-btn.active{background:#1e3a2b;color:#d9c89a}
+.checkout-hint{font-size:11px;color:#6a6a5a;margin-bottom:12px;font-style:italic}
+.checkout-input{width:100%;padding:10px 12px;border:2px solid #1e3a2b;border-radius:8px;font-family:inherit;font-size:14px;background:#fff;margin-bottom:8px}
+.checkout-input.hidden{display:none}
+.cart-footer{padding:16px 20px;border-top:2px solid #1e3a2b}
+.cart-total{font-size:19px;font-weight:bold;margin-bottom:12px;color:#1e3a2b}
+.cart-footer .btn-primary{width:100%;text-align:center;padding:14px;font-size:15px}
 
-.cart-item { display: flex; flex-direction: column; padding: 14px 0; border-bottom: 1px solid #eee; gap: 8px; }
-.cart-item-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
-.cart-item-name { font-size: 15px; color: #1e3a2b; font-weight: bold; flex: 1; }
-.cart-item-remove { background: none; border: none; color: #c44; font-size: 20px; cursor: pointer; padding: 0 4px; }
-.cart-item-bottom { display: flex; justify-content: space-between; align-items: center; }
-.cart-item-controls { display: flex; align-items: center; gap: 8px; }
-.cart-item-controls .counter-btn { width: 28px; height: 28px; font-size: 16px; }
-.cart-item-controls .counter-value { font-size: 15px; min-width: 22px; }
-.cart-item-price { font-weight: bold; color: #1e3a2b; font-size: 16px; }
+/* ===== Модальное окно заказа ===== */
+.order-modal{position:fixed;inset:0;background:rgba(20,42,30,0.7);z-index:400;display:none;align-items:center;justify-content:center;padding:20px}
+.order-modal.open{display:flex}
+.order-card{background:#fff;border-radius:20px;max-width:460px;width:100%;max-height:90vh;overflow-y:auto;padding:26px 22px}
+.order-card h3{font-size:22px;color:#1e3a2b;text-align:center;margin-bottom:6px}
+.order-card .order-sub{text-align:center;color:#6a6a5a;font-size:13px;font-style:italic;margin-bottom:18px}
+.order-text{background:#f0e6d0;border:1px dashed #1e3a2b;border-radius:12px;padding:14px;font-family:'Courier New',monospace;font-size:13px;white-space:pre-wrap;color:#1e3a2b;margin-bottom:16px;max-height:240px;overflow-y:auto;line-height:1.5}
+.order-actions{display:flex;flex-direction:column;gap:8px}
+.order-actions .btn{width:100%;padding:14px;font-size:15px;text-align:center}
+.btn-max{background:#1e3a2b;color:#d9c89a}
+.btn-max:hover{background:#2d5540}
+.btn-whatsapp{background:#25D366;color:#fff}
+.btn-whatsapp:hover{background:#1ebe5a}
+.order-note{text-align:center;font-size:12px;color:#6a6a5a;margin-top:12px;font-style:italic}
+.order-close-link{display:block;width:100%;background:transparent;color:#6a6a5a;font-size:13px;text-align:center;margin-top:10px;padding:8px;cursor:pointer;border:none;font-family:inherit}
 
-.cart-empty { text-align: center; color: #999; padding: 40px 0; }
-.cart-footer { padding: 20px; border-top: 2px solid #1e3a2b; }
-.cart-total { font-size: 20px; font-weight: bold; margin-bottom: 15px; color: #1e3a2b; }
-.cart-footer .btn-primary { width: 100%; text-align: center; }
+.toast{position:fixed;bottom:100px;right:25px;z-index:500;background:#1e3a2b;color:#d9c89a;padding:12px 20px;border-radius:10px;font-size:15px;opacity:0;transform:translateY(20px);transition:all 0.3s;pointer-events:none;max-width:300px}
+.toast.show{opacity:1;transform:translateY(0)}
 
-.toast {
-  position: fixed; bottom: 100px; right: 25px; z-index: 250;
-  background: #1e3a2b; color: #d9c89a;
-  padding: 12px 20px; border-radius: 10px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-  font-size: 15px; opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.3s;
-  pointer-events: none;
+@media (max-width:900px){
+  .about-grid,.catering-info{grid-template-columns:1fr;gap:25px}
 }
-.toast.show { opacity: 1; transform: translateY(0); }
-
-/* ===== Адаптив ===== */
-@media (max-width: 900px) {
-  .about-grid { grid-template-columns: 1fr; gap: 30px; }
-}
-@media (max-width: 768px) {
-  .hero { padding: 80px 0; }
-  .hero h1 { font-size: 34px; }
-  .hero p { font-size: 16px; }
-  .section-title { font-size: 28px; }
-  .header-inner { flex-direction: column; text-align: center; }
-  .nav { justify-content: center; gap: 15px; }
-  .booking-form { grid-template-columns: 1fr; }
-  .cart-panel { width: 100%; right: -100%; }
-  .cart-btn { padding: 14px 20px; font-size: 14px; bottom: 15px; right: 15px; }
-  .mandala-bg { width: 500px; height: 500px; }
+@media (max-width:768px){
+  .header{padding:10px 0}
+  .header-inner{flex-direction:column;text-align:center;gap:8px}
+  .logo{font-size:22px;letter-spacing:2px}
+  .nav{justify-content:center;gap:10px}
+  .nav a{font-size:13px}
+  .phone{font-size:14px}
+  .hero{padding:50px 0 40px}
+  .hero h1{font-size:26px}
+  .hero p{font-size:14px;margin-bottom:22px}
+  .btn{padding:11px 22px;font-size:14px}
+  .btn-big{padding:16px 30px;font-size:16px}
+  .mandala-bg{width:380px;height:380px}
+  .section{padding:35px 0 40px}
+  .section-title{font-size:22px}
+  .section-subtitle{font-size:13px;margin-bottom:22px}
+  .categories{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding-bottom:8px;scrollbar-width:none}
+  .categories::-webkit-scrollbar{display:none}
+  .cat-btn{padding:7px 14px;font-size:13px;flex-shrink:0}
+  .menu-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .menu-card-img{height:110px}
+  .menu-card-body{padding:10px}
+  .menu-card-title{font-size:14px}
+  .menu-card-desc{font-size:11px}
+  .menu-card-footer{flex-direction:column;align-items:stretch;gap:6px}
+  .menu-card-price{font-size:15px}
+  .card-counter{justify-content:space-between}
+  .counter-btn{width:26px;height:26px;font-size:15px}
+  .counter-value{font-size:14px;min-width:18px}
+  .meat-frame{padding:26px 14px}
+  .meat-grid{grid-template-columns:1fr}
+  .catering-grid{grid-template-columns:1fr 1fr}
+  .catering-stats{grid-template-columns:1fr 1fr}
+  .reviews-grid{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 20px 12px;margin:0 -20px -12px;scrollbar-width:none}
+  .reviews-grid::-webkit-scrollbar{display:none}
+  .review-card{flex:0 0 82%;scroll-snap-align:start}
+  .about-stats{grid-template-columns:1fr 1fr}
+  .delivery-grid{gap:12px}
+  #contacts p{font-size:15px}
+  .footer{padding:22px 0;font-size:12px}
+  .cart-panel{width:100%;right:-100%}
+  .cart-btn{padding:11px 16px;font-size:13px;bottom:14px;right:14px}
+  .toast{font-size:13px;padding:10px 16px;bottom:78px;right:14px;left:14px;max-width:none}
 }
 </style>
 </head>
@@ -326,90 +269,51 @@ a { color: inherit; text-decoration: none; }
 
 <header class="header">
   <div class="container header-inner">
-    <div class="logo">
-      <svg width="42" height="42" viewBox="0 0 100 100">
-        <circle cx="50" cy="10" r="5" fill="#d9c89a"/>
-        <path d="M 22 48 A 28 28 0 0 1 78 48" fill="none" stroke="#d9c89a" stroke-width="5" stroke-linecap="round"/>
-        <line x1="10" y1="48" x2="90" y2="48" stroke="#d9c89a" stroke-width="5" stroke-linecap="round"/>
-        <path d="M 10 48 Q 25 48 35 62 Q 25 76 10 76" fill="none" stroke="#d9c89a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M 90 48 Q 75 48 65 62 Q 75 76 90 76" fill="none" stroke="#d9c89a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        <polygon points="50,62 60,78 50,94 40,78" fill="none" stroke="#d9c89a" stroke-width="3" stroke-linejoin="round"/>
-        <polygon points="50,70 54,78 50,86 46,78" fill="#d9c89a"/>
-        <line x1="35" y1="78" x2="45" y2="78" stroke="#d9c89a" stroke-width="3" stroke-linecap="round"/>
-        <line x1="55" y1="78" x2="65" y2="78" stroke="#d9c89a" stroke-width="3" stroke-linecap="round"/>
-      </svg>
-      <span>КАФЕ ЯЛ</span>
-    </div>
+    <div class="logo">КАФЕ ЯЛ</div>
     <nav class="nav">
       <a href="#about">О нас</a>
       <a href="#menu">Меню</a>
+      <a href="#meat">Мясная лавка</a>
+      <a href="#catering">Выездная кухня</a>
       <a href="#delivery">Доставка</a>
       <a href="#booking">Бронирование</a>
       <a href="#contacts">Контакты</a>
     </nav>
-    <a href="tel:+79631247428" class="phone">+7 (963) 124-74-28</a>
+    <a href="tel:+79273216167" class="phone">+7 927 321-61-67</a>
   </div>
 </header>
 
 <section class="hero">
   <svg class="mandala-bg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
     <g fill="none" stroke="#d9c89a" stroke-width="0.5">
-      <circle cx="100" cy="100" r="95"/>
-      <circle cx="100" cy="100" r="75"/>
-      <circle cx="100" cy="100" r="55"/>
-      <circle cx="100" cy="100" r="35"/>
-      <g id="petals">
-        <path d="M100,20 Q110,50 100,80 Q90,50 100,20 Z"/>
-        <path d="M100,180 Q110,150 100,120 Q90,150 100,180 Z"/>
-        <path d="M20,100 Q50,90 80,100 Q50,110 20,100 Z"/>
-        <path d="M180,100 Q150,90 120,100 Q150,110 180,100 Z"/>
-      </g>
-      <g id="petals2" transform="rotate(45 100 100)">
-        <path d="M100,20 Q110,50 100,80 Q90,50 100,20 Z"/>
-        <path d="M100,180 Q110,150 100,120 Q90,150 100,180 Z"/>
-        <path d="M20,100 Q50,90 80,100 Q50,110 20,100 Z"/>
-        <path d="M180,100 Q150,90 120,100 Q150,110 180,100 Z"/>
-      </g>
-      <g id="petals3" transform="rotate(22.5 100 100)">
-        <path d="M100,20 Q110,50 100,80 Q90,50 100,20 Z"/>
-        <path d="M100,180 Q110,150 100,120 Q90,150 100,180 Z"/>
-        <path d="M20,100 Q50,90 80,100 Q50,110 20,100 Z"/>
-        <path d="M180,100 Q150,90 120,100 Q150,110 180,100 Z"/>
-      </g>
-      <g id="petals4" transform="rotate(67.5 100 100)">
-        <path d="M100,20 Q110,50 100,80 Q90,50 100,20 Z"/>
-        <path d="M100,180 Q110,150 100,120 Q90,150 100,180 Z"/>
-        <path d="M20,100 Q50,90 80,100 Q50,110 20,100 Z"/>
-        <path d="M180,100 Q150,90 120,100 Q150,110 180,100 Z"/>
-      </g>
+      <circle cx="100" cy="100" r="95"/><circle cx="100" cy="100" r="75"/>
+      <circle cx="100" cy="100" r="55"/><circle cx="100" cy="100" r="35"/>
+      <g><path d="M100,20 Q110,50 100,80 Q90,50 100,20 Z"/><path d="M100,180 Q110,150 100,120 Q90,150 100,180 Z"/><path d="M20,100 Q50,90 80,100 Q50,110 20,100 Z"/><path d="M180,100 Q150,90 120,100 Q150,110 180,100 Z"/></g>
+      <g transform="rotate(45 100 100)"><path d="M100,20 Q110,50 100,80 Q90,50 100,20 Z"/><path d="M100,180 Q110,150 100,120 Q90,150 100,180 Z"/><path d="M20,100 Q50,90 80,100 Q50,110 20,100 Z"/><path d="M180,100 Q150,90 120,100 Q150,110 180,100 Z"/></g>
+      <g transform="rotate(22.5 100 100)"><path d="M100,20 Q110,50 100,80 Q90,50 100,20 Z"/><path d="M100,180 Q110,150 100,120 Q90,150 100,180 Z"/><path d="M20,100 Q50,90 80,100 Q50,110 20,100 Z"/><path d="M180,100 Q150,90 120,100 Q150,110 180,100 Z"/></g>
+      <g transform="rotate(67.5 100 100)"><path d="M100,20 Q110,50 100,80 Q90,50 100,20 Z"/><path d="M100,180 Q110,150 100,120 Q90,150 100,180 Z"/><path d="M20,100 Q50,90 80,100 Q50,110 20,100 Z"/><path d="M180,100 Q150,90 120,100 Q150,110 180,100 Z"/></g>
     </g>
   </svg>
-
   <div class="container">
     <h1>Восточная кухня<br><span class="accent">в Актаныше</span></h1>
-    <p>Роллы, пицца, шашлык, лагман и домашняя выпечка. Доставка по городу и самовывоз.</p>
+    <p>Роллы, пицца, шашлык, лагман и домашняя выпечка. Доставка, мясная лавка и выездная кухня по Татарстану.</p>
     <div class="hero-buttons">
       <a href="#menu" class="btn btn-primary">Смотреть меню</a>
-      <a href="#delivery" class="btn btn-outline">Заказать доставку</a>
+      <a href="#menu" class="btn btn-outline">🛒 Заказать</a>
     </div>
   </div>
 </section>
 
 <section id="about" class="section">
   <div class="container">
-    <div class="divider reveal">
-      <span class="line"></span>
-      <svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,6 26,20 20,34 14,20" fill="none" stroke="#d9c89a" stroke-width="1.5"/><polygon points="20,12 23,20 20,28 17,20" fill="#d9c89a"/></svg>
-      <span class="line"></span>
-    </div>
-    <h2 class="section-title">О кафе «Ял»</h2>
-    <p class="section-subtitle">Восточное гостеприимство в самом сердце Актаныша</p>
-
+    <div class="divider reveal"><span class="line"></span><svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,6 26,20 20,34 14,20" fill="none" stroke="#d9c89a" stroke-width="1.5"/><polygon points="20,12 23,20 20,28 17,20" fill="#d9c89a"/></svg><span class="line"></span></div>
+    <h2 class="section-title reveal">О кафе «Ял»</h2>
+    <p class="section-subtitle reveal">Восточное гостеприимство в самом сердце Актаныша</p>
     <div class="about-grid">
       <div class="about-text reveal">
         <h3>Готовим с душой — как дома</h3>
         <p>«Ял» — это место, где восточные традиции встречаются с домашним уютом. Мы готовим по семейным рецептам: плов с говядиной, сочный шашлык на мангале, ароматный лагман и, конечно, роллы, которые полюбили наши гости.</p>
-        <p>Каждое утро мы замешиваем тесто для самсы и чебуреков, а вечером встречаем вас горячим чаем и свежей выпечкой. Приходите всей семьёй — у нас есть что-то для каждого.</p>
+        <p>Каждое утро мы замешиваем тесто для самсы и чебуреков, а вечером встречаем вас горячим чаем и свежей выпечкой.</p>
       </div>
       <div class="about-stats reveal">
         <div class="stat-card"><div class="stat-number">80+</div><div class="stat-label">блюд в меню</div></div>
@@ -423,14 +327,9 @@ a { color: inherit; text-decoration: none; }
 
 <section id="menu" class="section section-menu">
   <div class="container">
-    <div class="divider reveal">
-      <span class="line"></span>
-      <svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,6 26,20 20,34 14,20" fill="none" stroke="#d9c89a" stroke-width="1.5"/><polygon points="20,12 23,20 20,28 17,20" fill="#d9c89a"/></svg>
-      <span class="line"></span>
-    </div>
-    <h2 class="section-title">Наше меню</h2>
-    <p class="section-subtitle">Восточные блюда, роллы и пицца — выбирайте на свой вкус</p>
-
+    <div class="divider reveal"><span class="line"></span><svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,6 26,20 20,34 14,20" fill="none" stroke="#d9c89a" stroke-width="1.5"/><polygon points="20,12 23,20 20,28 17,20" fill="#d9c89a"/></svg><span class="line"></span></div>
+    <h2 class="section-title reveal">Наше меню</h2>
+    <p class="section-subtitle reveal">Восточные блюда, роллы и пицца — выбирайте на свой вкус</p>
     <div class="categories">
       <button class="cat-btn active" data-cat="all">Всё</button>
       <button class="cat-btn" data-cat="rolls">Роллы</button>
@@ -447,100 +346,120 @@ a { color: inherit; text-decoration: none; }
   </div>
 </section>
 
+<section id="meat" class="section section-meat">
+  <div class="container">
+    <div class="meat-frame">
+      <h2 class="section-title reveal">🥩 Мясная лавка</h2>
+      <p class="section-subtitle reveal">Свежее маринованное мясо — приготовьте дома</p>
+      <div class="meat-grid" id="meatGrid"></div>
+      <p class="meat-note">Цены указаны за 1 кг. Минимальный заказ — 0,5 кг. Маринуем под заказ.</p>
+    </div>
+  </div>
+</section>
+
 <section class="section" style="background:#f7f1e3;">
   <div class="container">
-    <div class="divider reveal">
-      <span class="line"></span>
-      <svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,6 26,20 20,34 14,20" fill="none" stroke="#d9c89a" stroke-width="1.5"/><polygon points="20,12 23,20 20,28 17,20" fill="#d9c89a"/></svg>
-      <span class="line"></span>
-    </div>
-    <h2 class="section-title">Отзывы гостей</h2>
-    <p class="section-subtitle">Что говорят о нас наши посетители</p>
-
+    <div class="divider reveal"><span class="line"></span><svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,6 26,20 20,34 14,20" fill="none" stroke="#d9c89a" stroke-width="1.5"/><polygon points="20,12 23,20 20,28 17,20" fill="#d9c89a"/></svg><span class="line"></span></div>
+    <h2 class="section-title reveal">Отзывы гостей</h2>
+    <p class="section-subtitle reveal">Что говорят о нас наши посетители</p>
     <div class="reviews-grid">
-      <div class="review-card reveal">
-        <p class="review-text">Лучший лагман в Актаныше! Заказываем всей семьёй каждую неделю. Очень вкусно и по-домашнему.</p>
-        <div class="review-author"><div class="review-avatar">А</div><div><div class="review-name">Алия</div><div class="review-stars">★★★★★</div></div></div>
+      <div class="review-card reveal"><p class="review-text">Лучший лагман в Актаныше! Заказываем всей семьёй каждую неделю. Очень вкусно и по-домашнему.</p><div class="review-author"><div class="review-avatar">А</div><div><div class="review-name">Алия</div><div class="review-stars">★★★★★</div></div></div></div>
+      <div class="review-card reveal"><p class="review-text">Роллы свежие, пицца горячая, шашлык сочный. Доставили быстро, ещё и чай в подарок приложили!</p><div class="review-author"><div class="review-avatar">Р</div><div><div class="review-name">Рустем</div><div class="review-stars">★★★★★</div></div></div></div>
+      <div class="review-card reveal"><p class="review-text">Отмечали здесь юбилей — персонал помог всё организовать. Самса и чебуреки просто волшебные!</p><div class="review-author"><div class="review-avatar">Г</div><div><div class="review-name">Гульнара</div><div class="review-stars">★★★★★</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="catering" class="section section-catering">
+  <div class="container">
+    <div class="divider reveal"><span class="line"></span><svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,6 26,20 20,34 14,20" fill="none" stroke="#d9c89a" stroke-width="1.5"/><polygon points="20,12 23,20 20,28 17,20" fill="#d9c89a"/></svg><span class="line"></span></div>
+    <h2 class="section-title reveal">🔥 Выездная кухня</h2>
+    <p class="section-subtitle reveal">Организуем питание на вашем мероприятии по всему Татарстану</p>
+    <div class="catering-grid">
+      <div class="catering-card reveal"><span class="catering-icon">💍</span><h3>Свадьбы</h3><p>Банкетное меню, живой мангал, обслуживание</p></div>
+      <div class="catering-card reveal"><span class="catering-icon">🎉</span><h3>Юбилеи</h3><p>Праздничный стол с восточной кухней</p></div>
+      <div class="catering-card reveal"><span class="catering-icon">🏢</span><h3>Корпоративы</h3><p>Фуршеты, банкеты и выездные обеды</p></div>
+      <div class="catering-card reveal"><span class="catering-icon">🎂</span><h3>Дни рождения</h3><p>Тёплый приём для семьи и друзей</p></div>
+    </div>
+    <div class="catering-info">
+      <ul class="catering-features reveal">
+        <li>Мангал и всё оборудование привозим сами</li>
+        <li>Повара и официанты — опытная команда</li>
+        <li>Посуда, приборы, скатерти, декор</li>
+        <li>Индивидуальное меню под ваш формат</li>
+        <li>Работаем по всему Татарстану</li>
+      </ul>
+      <div class="catering-stats reveal">
+        <div class="catering-stat"><div class="catering-stat-num">Без<br>ограничений</div><div class="catering-stat-label">по числу гостей</div></div>
+        <div class="catering-stat"><div class="catering-stat-num">Весь<br>Татарстан</div><div class="catering-stat-label">выезд на любую площадку</div></div>
+        <div class="catering-stat"><div class="catering-stat-num">100%<br>включено</div><div class="catering-stat-label">от персонала до посуды</div></div>
+        <div class="catering-stat"><div class="catering-stat-num">Под<br>ключ</div><div class="catering-stat-label">от заявки до праздника</div></div>
       </div>
-      <div class="review-card reveal">
-        <p class="review-text">Роллы свежие, пицца горячая, шашлык сочный. Доставили быстро, ещё и чай в подарок приложили. Спасибо!</p>
-        <div class="review-author"><div class="review-avatar">Р</div><div><div class="review-name">Рустем</div><div class="review-stars">★★★★★</div></div></div>
-      </div>
-      <div class="review-card reveal">
-        <p class="review-text">Отмечали здесь юбилей — персонал помог всё организовать, атмосфера уютная. Самса и чебуреки просто волшебные!</p>
-        <div class="review-author"><div class="review-avatar">Г</div><div><div class="review-name">Гульнара</div><div class="review-stars">★★★★★</div></div></div>
-      </div>
+    </div>
+    <div class="catering-cta reveal">
+      <p>Расскажите о вашем мероприятии — подберём меню и рассчитаем стоимость</p>
+      <a href="tel:+79273216167" class="btn btn-primary">📞 Обсудить мероприятие</a>
     </div>
   </div>
 </section>
 
 <section id="delivery" class="section section-dark">
   <div class="container">
-    <div class="divider reveal">
-      <span class="line"></span>
-      <svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,6 26,20 20,34 14,20" fill="none" stroke="#d9c89a" stroke-width="1.5"/><polygon points="20,12 23,20 20,28 17,20" fill="#d9c89a"/></svg>
-      <span class="line"></span>
-    </div>
-    <h2 class="section-title">Доставка и самовывоз</h2>
-    <p class="section-subtitle">Привезём горячее прямо к вашему столу</p>
-
+    <div class="divider reveal"><span class="line"></span><svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,6 26,20 20,34 14,20" fill="none" stroke="#d9c89a" stroke-width="1.5"/><polygon points="20,12 23,20 20,28 17,20" fill="#d9c89a"/></svg><span class="line"></span></div>
+    <h2 class="section-title reveal">Доставка и самовывоз</h2>
+    <p class="section-subtitle reveal">Привезём горячее прямо к вашему столу</p>
     <div class="delivery-grid">
-      <div class="delivery-card reveal"><h3>🚚 Доставка по Актанышу</h3><p>Привезём заказ по адресу в течение 45–60 минут. Минимальная сумма — 500 ₽.</p></div>
+      <div class="delivery-card reveal"><h3>🚚 Доставка по Актанышу</h3><p>Доставка по Актанышу — <strong>250 ₽</strong>. Привезём заказ в течение 45–60 минут.</p></div>
       <div class="delivery-card reveal"><h3>🏃 Самовывоз</h3><p>Заберите заказ сами: ул. Мусы Джалиля 7. Готово через 20 минут.</p></div>
-      <div class="delivery-card reveal"><h3>📞 Заказ по телефону</h3><p>Позвоните нам: <a href="tel:+79631247428">+7 (963) 124-74-28</a></p></div>
+      <div class="delivery-card reveal"><h3>📞 Заказ по телефону</h3><p>Позвоните нам: <a href="tel:+79273216167">+7 927 321-61-67</a></p></div>
     </div>
   </div>
 </section>
 
 <section id="booking" class="section">
   <div class="container">
-    <div class="divider reveal">
-      <span class="line"></span>
-      <svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,6 26,20 20,34 14,20" fill="none" stroke="#d9c89a" stroke-width="1.5"/><polygon points="20,12 23,20 20,28 17,20" fill="#d9c89a"/></svg>
-      <span class="line"></span>
+    <div class="divider reveal"><span class="line"></span><svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,6 26,20 20,34 14,20" fill="none" stroke="#d9c89a" stroke-width="1.5"/><polygon points="20,12 23,20 20,28 17,20" fill="#d9c89a"/></svg><span class="line"></span></div>
+    <h2 class="section-title reveal">Забронировать столик</h2>
+    <p class="section-subtitle reveal">Позвоните нам — забронируем столик на удобное время</p>
+    <div class="booking-actions reveal">
+      <a href="tel:+79273216167" class="btn btn-primary btn-big">📞 Позвонить: +7 927 321-61-67</a>
     </div>
-    <h2 class="section-title">Забронировать столик</h2>
-    <p class="section-subtitle">Оставьте заявку — мы перезвоним и подтвердим бронь</p>
-
-    <form class="booking-form reveal" id="bookingForm">
-      <input type="text" placeholder="Ваше имя" required>
-      <input type="tel" placeholder="Телефон" required>
-      <input type="date" required>
-      <input type="time" required>
-      <input type="number" placeholder="Гостей" min="1" max="20" required>
-      <button type="submit" class="btn btn-primary">Забронировать</button>
-    </form>
-    <p class="form-note" id="bookingNote"></p>
+    <p class="booking-note reveal">Просто позвоните — мы сразу примем вашу бронь и подтвердим время.</p>
+    <p class="booking-hours reveal">Работаем ежедневно с 10:00 до 23:00</p>
   </div>
 </section>
 
 <section id="contacts" class="section section-dark">
   <div class="container">
-    <div class="divider reveal">
-      <span class="line"></span>
-      <svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,6 26,20 20,34 14,20" fill="none" stroke="#d9c89a" stroke-width="1.5"/><polygon points="20,12 23,20 20,28 17,20" fill="#d9c89a"/></svg>
-      <span class="line"></span>
-    </div>
-    <h2 class="section-title">Контакты</h2>
+    <div class="divider reveal"><span class="line"></span><svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,6 26,20 20,34 14,20" fill="none" stroke="#d9c89a" stroke-width="1.5"/><polygon points="20,12 23,20 20,28 17,20" fill="#d9c89a"/></svg><span class="line"></span></div>
+    <h2 class="section-title reveal">Контакты</h2>
     <p>📍 ул. Мусы Джалиля 7, с. Актаныш</p>
-    <p>📞 <a href="tel:+79631247428">+7 (963) 124-74-28</a></p>
+    <p>📞 <a href="tel:+79273216167">+7 927 321-61-67</a></p>
     <p>🕐 Ежедневно с 10:00 до 23:00</p>
   </div>
 </section>
 
-<footer class="footer">
-  <div class="container">© 2026 Кафе «Ял». Восточная кухня в Актаныше.</div>
-</footer>
+<footer class="footer">© 2026 Кафе «Ял». Восточная кухня в Актаныше.</footer>
 
 <button class="cart-btn" id="cartBtn">🛒 Корзина · <span id="cartCount">0</span> шт · <span id="cartBtnTotal">0</span> ₽</button>
 
 <div class="cart-panel" id="cartPanel">
-  <div class="cart-header">
-    <h3>Ваш заказ</h3>
-    <button class="cart-close" id="cartClose">✕</button>
-  </div>
-  <div class="cart-items" id="cartItems">
-    <p class="cart-empty">Корзина пока пуста</p>
+  <div class="cart-header"><h3>Ваш заказ</h3><button class="cart-close" id="cartClose">✕</button></div>
+  <div class="cart-body">
+    <div class="cart-items" id="cartItems"><p class="cart-empty">Корзина пока пуста</p></div>
+    <div class="cart-checkout" id="cartCheckout" style="display:none;">
+      <div class="checkout-label">Способ получения:</div>
+      <div class="delivery-type">
+        <button class="delivery-type-btn active" data-delivery="pickup">🏃<br>Самовывоз</button>
+        <button class="delivery-type-btn" data-delivery="delivery">🚚<br>Доставка</button>
+        <button class="delivery-type-btn" data-delivery="hall">🪑<br>В зале</button>
+      </div>
+      <div class="checkout-hint" id="deliveryHint">Заберёте сами по адресу: ул. Мусы Джалиля 7</div>
+      <input class="checkout-input" type="text" id="orderName" placeholder="Ваше имя">
+      <input class="checkout-input" type="tel" id="orderPhone" placeholder="Телефон">
+      <input class="checkout-input hidden" type="text" id="orderAddress" placeholder="Адрес доставки">
+      <input class="checkout-input" type="text" id="orderComment" placeholder="Комментарий (необязательно)">
+    </div>
   </div>
   <div class="cart-footer">
     <div class="cart-total">Итого: <span id="cartTotal">0</span> ₽</div>
@@ -548,10 +467,25 @@ a { color: inherit; text-decoration: none; }
   </div>
 </div>
 
+<div class="order-modal" id="orderModal">
+  <div class="order-card">
+    <h3>Заказ готов ✨</h3>
+    <p class="order-sub">Выберите, как удобнее передать заказ</p>
+    <div class="order-text" id="orderText"></div>
+    <div class="order-actions">
+      <button class="btn btn-primary" id="callBtn">📞 Позвонить и заказать</button>
+      <button class="btn btn-whatsapp" id="waBtn">💬 Отправить в WhatsApp</button>
+      <button class="btn btn-max" id="maxBtn">💬 Открыть MAX</button>
+    </div>
+    <p class="order-note">Рекомендуем позвонить — так быстрее всего.</p>
+    <button class="order-close-link" id="closeOrderBtn">← Вернуться в корзину</button>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
-const dishes = [
+const dishes=[
   {cat:'rolls',name:'Калифорния',price:380,emoji:'🍣',desc:'Лосось, огурец, икра масаго, сливочный сыр'},
   {cat:'rolls',name:'Вулкан',price:369,emoji:'🌋',desc:'Креветки, крабовые палочки, спайси соус'},
   {cat:'rolls',name:'Цезарь',price:399,emoji:'🥗',desc:'Куриная грудка, салат, соус Цезарь'},
@@ -629,25 +563,159 @@ const dishes = [
   {cat:'bakery',name:'Самса',price:80,emoji:'🥟',desc:'С мясом'},
   {cat:'bakery',name:'Треугольник',price:80,emoji:'🥟',desc:'С картофелем'},
   {cat:'bakery',name:'Мини-кыстыбый',price:80,emoji:'🥟',desc:'С картофелем'},
+  {cat:'meat-shop',name:'Шашлык курица (маринованный)',price:450,emoji:'🍗',desc:'Куриное филе в фирменном маринаде'},
+  {cat:'meat-shop',name:'Шашлык индейка (маринованный)',price:650,emoji:'🦃',desc:'Нежное филе индейки'},
+  {cat:'meat-shop',name:'Шашлык баранина (мякоть)',price:890,emoji:'🍖',desc:'Мякоть молодого барашка'},
+  {cat:'meat-shop',name:'Шашлык баранина (корейка)',price:1100,emoji:'🍖',desc:'Корейка на косточке'},
+  {cat:'meat-shop',name:'Шашлык конина',price:1200,emoji:'🥩',desc:'Традиционный восточный маринад'},
+  {cat:'meat-shop',name:'Купаты (сырые)',price:600,emoji:'🌭',desc:'Домашние колбаски для гриля'},
+  {cat:'meat-shop',name:'Люля-кебаб (сырой)',price:550,emoji:'🥙',desc:'Рубленое мясо со специями'},
+  {cat:'meat-shop',name:'Крылышки в маринаде',price:400,emoji:'🍗',desc:'Куриные крылья в соусе BBQ'},
+  {cat:'meat-shop',name:'Стейк из говядины',price:1200,emoji:'🥩',desc:'Мраморная говядина, премиум'},
 ];
 
-let cart = {};
-const menuGrid = document.getElementById('menuGrid');
+const localImages={
+  'Калифорния':'california.jpg',
+  'Вулкан':'vulkan.jpg',
+  'Цезарь':'cezar.jpg',
+  'Филадельфия':'filadelfiya.jpg',
+  'Унаги-Маки':'unagi-maki.jpg',
+  'Банзай':'banzay.jpg',
+  'Венеция':'veneciya.jpg',
+  'Торнадо':'tornado.jpg',
+  'Сёгун':'syogun.jpg',
+  'Чиотто':'chiotto.jpg',
+  'Феникс':'feniks.jpg',
+  'Классические':'klassicheskie.jpg',
+};
 
-function cssEscape(str) {
-  return str.replace(/"/g, '\\"');
+const fallbackImages={
+  'Калифорния':'https://images.unsplash.com/photo-1617196034183-421b4917c92d?w=600&q=80',
+  'Вулкан':'https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=600&q=80',
+  'Цезарь':'https://images.unsplash.com/photo-1615361200141-f45040f367be?w=600&q=80',
+  'Филадельфия':'https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=600&q=80',
+  'Унаги-Маки':'https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=600&q=80',
+  'Банзай':'https://images.unsplash.com/photo-1607301405390-d831c242f59b?w=600&q=80',
+  'Венеция':'https://images.unsplash.com/photo-1615361200141-f45040f367be?w=600&q=80',
+  'Торнадо':'https://images.unsplash.com/photo-1564489563601-c53cfc451e93?w=600&q=80',
+  'Сёгун':'https://images.unsplash.com/photo-1617196034183-421b4917c92d?w=600&q=80',
+  'Чиотто':'https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=600&q=80',
+  'Феникс':'https://images.unsplash.com/photo-1615361200141-f45040f367be?w=600&q=80',
+  'Классические':'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=600&q=80',
+  'Сет «Ял»':'https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=600&q=80',
+  'Сет «За Косарь»':'https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=600&q=80',
+  'Сет «Морской»':'https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?w=600&q=80',
+  'Пепперони':'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=80',
+  'Ветчина и грибы':'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80',
+  'Гавайская':'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600&q=80',
+  '4 вкуса':'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80',
+  'Ранч':'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=80',
+  'Барбекю':'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600&q=80',
+  'Курица с грибами':'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80',
+  'Шаурма':'https://images.unsplash.com/photo-1561651823-34feb02250e4?w=600&q=80',
+  'Бургер':'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80',
+  'Картофель по-деревенски':'https://images.unsplash.com/photo-1518013431117-eb1465fa5752?w=600&q=80',
+  'Картофель фри':'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&q=80',
+  'Наггетсы (5 шт)':'https://images.unsplash.com/photo-1562967914-608f82629710?w=600&q=80',
+  'Мини-кыстыбый (3 шт)':'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80',
+  'Сосиски в кляре':'https://images.unsplash.com/photo-1612392061787-2d078b3e573c?w=600&q=80',
+  'Чебурек «Ял»':'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80',
+  'Жаркое':'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80',
+  'Пельмени детские':'https://images.unsplash.com/photo-1604152135912-04a022e23696?w=600&q=80',
+  'Лагман':'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&q=80',
+  'Хинкали':'https://images.unsplash.com/photo-1604152135912-04a022e23696?w=600&q=80',
+  'Пельмени Том Ям':'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80',
+  'Том Ям':'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&q=80',
+  'Шурпа':'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80',
+  'Солянка':'https://images.unsplash.com/photo-1604152135912-04a022e23696?w=600&q=80',
+  'Пельмени из конины':'https://images.unsplash.com/photo-1604152135912-04a022e23696?w=600&q=80',
+  'Мясной':'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80',
+  'Цезарь с курицей':'https://images.unsplash.com/photo-1546793665-c74683f339c1?w=600&q=80',
+  'Цезарь с креветками':'https://images.unsplash.com/photo-1546793665-c74683f339c1?w=600&q=80',
+  'Овощной':'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80',
+  'Гавайский':'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80',
+  'Греческий':'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&q=80',
+  'Шашлык курица':'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=600&q=80',
+  'Шашлык индейка':'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80',
+  'Шашлык баранина (мякоть)':'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=600&q=80',
+  'Шашлык баранина (корейка)':'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80',
+  'Шашлык конина':'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=600&q=80',
+  'Купаты':'https://images.unsplash.com/photo-1612392061787-2d078b3e573c?w=600&q=80',
+  'Голень курицы':'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=600&q=80',
+  'Отбивная курицы':'https://images.unsplash.com/photo-1562967914-608f82629710?w=600&q=80',
+  'Крылышки':'https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=600&q=80',
+  'Филе под овощами':'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=600&q=80',
+  'Плов':'https://images.unsplash.com/photo-1633945274309-2c16c9682a8c?w=600&q=80',
+  'Голубцы':'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80',
+  'Рис':'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&q=80',
+  'Спагетти':'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&q=80',
+  'Пюре':'https://images.unsplash.com/photo-1518013431117-eb1465fa5752?w=600&q=80',
+  'Гречка':'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&q=80',
+  'Макароны':'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&q=80',
+  'Сырная тарелка':'https://images.unsplash.com/photo-1452195100486-9cc805987862?w=600&q=80',
+  'Мясная тарелка':'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80',
+  'Гренки':'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80',
+  'Тарелка из деликатесов':'https://images.unsplash.com/photo-1452195100486-9cc805987862?w=600&q=80',
+  'Чай чёрный':'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&q=80',
+  'Чай зелёный':'https://images.unsplash.com/photo-1627435601361-ec25f5b1d0e5?w=600&q=80',
+  'Чай фруктовый':'https://images.unsplash.com/photo-1571934811356-5cc061b6821f?w=600&q=80',
+  'Эспрессо':'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=600&q=80',
+  'Капучино':'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=600&q=80',
+  'Латте':'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80',
+  'Самса':'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80',
+  'Треугольник':'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80',
+  'Мини-кыстыбый':'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80',
+  'Шашлык курица (маринованный)':'https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=600&q=80',
+  'Шашлык индейка (маринованный)':'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=600&q=80',
+  'Шашлык баранина (мякоть)':'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=600&q=80',
+  'Шашлык баранина (корейка)':'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=600&q=80',
+  'Шашлык конина':'https://images.unsplash.com/photo-1588347818036-4b8ba52ec0f7?w=600&q=80',
+  'Купаты (сырые)':'https://images.unsplash.com/photo-1612392061787-2d078b3e573c?w=600&q=80',
+  'Люля-кебаб (сырой)':'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=600&q=80',
+  'Крылышки в маринаде':'https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=600&q=80',
+  'Стейк из говядины':'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=600&q=80',
+};
+
+function getImg(dish){
+  const local=localImages[dish.name];
+  const fb=fallbackImages[dish.name] || 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80';
+  return {local,fb};
 }
 
-function renderMenu(cat = 'all') {
-  menuGrid.innerHTML = '';
-  const list = cat === 'all' ? dishes : dishes.filter(d => d.cat === cat);
+let cart={};
+let userData={name:'',phone:'',address:'',delivery:'pickup'};
+try{const s=localStorage.getItem('yal_cart_v1');if(s)cart=JSON.parse(s)||{};}catch(e){cart={};}
+try{const s=localStorage.getItem('yal_user_v1');if(s)userData=Object.assign(userData,JSON.parse(s));}catch(e){}
+let currentDelivery=userData.delivery||'pickup';
 
-  list.forEach(dish => {
-    const card = document.createElement('div');
-    card.className = 'menu-card';
-    card.innerHTML = `
+function saveCart(){try{localStorage.setItem('yal_cart_v1',JSON.stringify(cart));}catch(e){}}
+function saveUser(){try{
+  userData.name=document.getElementById('orderName').value;
+  userData.phone=document.getElementById('orderPhone').value;
+  userData.address=document.getElementById('orderAddress').value;
+  userData.delivery=currentDelivery;
+  localStorage.setItem('yal_user_v1',JSON.stringify(userData));
+}catch(e){}}
+
+const menuGrid=document.getElementById('menuGrid');
+const meatGrid=document.getElementById('meatGrid');
+function cssEscape(str){return str.replace(/"/g,'\\"');}
+
+function renderMenu(cat='all'){
+  menuGrid.innerHTML='';
+  const list=cat==='all'?dishes.filter(d=>d.cat!=='meat-shop'):dishes.filter(d=>d.cat===cat);
+  list.forEach(dish=>{
+    const card=document.createElement('div');
+    card.className='menu-card';
+    const {local,fb}=getImg(dish);
+    const src=local||fb;
+    const onerr=local
+      ? `if(!this.dataset.tried){this.dataset.tried='1';this.src='${fb}';}else{this.style.display='none';}`
+      : `this.style.display='none';`;
+    card.innerHTML=`
       <div class="menu-card-img">
-        ${dish.emoji}
+        <span style="position:relative;z-index:1;">${dish.emoji}</span>
+        <img src="${src}" alt="${dish.name}" loading="lazy" onerror="${onerr}">
         <span class="menu-card-badge" data-badge="${cssEscape(dish.name)}"></span>
       </div>
       <div class="menu-card-body">
@@ -661,81 +729,97 @@ function renderMenu(cat = 'all') {
             <button class="counter-btn" data-action="plus" data-name="${cssEscape(dish.name)}">+</button>
           </div>
         </div>
-      </div>
-    `;
+      </div>`;
     menuGrid.appendChild(card);
   });
-
-  dishes.forEach(d => updateCardUI(d.name));
+  dishes.forEach(d=>updateCardUI(d.name));
 }
 
-function updateCardUI(name) {
-  const qty = cart[name] ? cart[name].qty : 0;
-  const badge = document.querySelector(`[data-badge="${cssEscape(name)}"]`);
-  const value = document.querySelector(`[data-value="${cssEscape(name)}"]`);
-  if (badge) {
-    if (qty > 0) { badge.textContent = qty; badge.classList.add('show'); }
-    else { badge.classList.remove('show'); }
-  }
-  if (value) value.textContent = qty;
+function renderMeatShop(){
+  const items=dishes.filter(d=>d.cat==='meat-shop');
+  meatGrid.innerHTML=items.map(dish=>{
+    const {local,fb}=getImg(dish);
+    const src=local||fb;
+    const onerr=local?`if(!this.dataset.tried){this.dataset.tried='1';this.src='${fb}';}else{this.style.display='none';}`:`this.style.display='none';`;
+    return `
+    <div class="meat-card">
+      <div class="meat-img"><img src="${src}" alt="${dish.name}" loading="lazy" onerror="${onerr}"></div>
+      <div class="meat-info">
+        <div class="meat-name">${dish.name}</div>
+        <div class="meat-desc">${dish.desc}</div>
+        <div class="meat-bottom">
+          <span class="meat-price">${dish.price} ₽<small>/кг</small></span>
+          <div class="card-counter">
+            <button class="counter-btn" data-action="minus" data-name="${cssEscape(dish.name)}">−</button>
+            <span class="counter-value" data-value="${cssEscape(dish.name)}">0</span>
+            <button class="counter-btn" data-action="plus" data-name="${cssEscape(dish.name)}">+</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  items.forEach(d=>updateCardUI(d.name));
 }
 
-menuGrid.addEventListener('click', e => {
-  const btn = e.target.closest('[data-action]');
-  if (!btn) return;
-  const name = btn.dataset.name;
-  const action = btn.dataset.action;
-  const dish = dishes.find(d => d.name === name);
-  if (!dish) return;
-  if (action === 'plus') addToCart(dish);
-  if (action === 'minus') removeOne(name);
-});
-
-function addToCart(dish) {
-  if (cart[dish.name]) cart[dish.name].qty++;
-  else cart[dish.name] = { price: dish.price, qty: 1 };
-  updateCardUI(dish.name);
-  updateCart();
-  showToast(`✓ «${dish.name}» добавлен`);
-  bumpCartButton();
+function updateCardUI(name){
+  const qty=cart[name]?cart[name].qty:0;
+  document.querySelectorAll(`[data-value="${cssEscape(name)}"]`).forEach(v=>v.textContent=qty);
+  document.querySelectorAll(`[data-badge="${cssEscape(name)}"]`).forEach(b=>{
+    if(qty>0){b.textContent=qty;b.classList.add('show');}else{b.classList.remove('show');}
+  });
 }
 
-function removeOne(name) {
-  if (!cart[name]) return;
-  cart[name].qty--;
-  if (cart[name].qty <= 0) delete cart[name];
-  updateCardUI(name);
-  updateCart();
-}
-
-function removeAll(name) {
-  delete cart[name];
-  updateCardUI(name);
-  updateCart();
-}
-
-document.getElementById('cartBtn').addEventListener('click', () => {
-  document.getElementById('cartPanel').classList.add('open');
-});
-document.getElementById('cartClose').addEventListener('click', () => {
-  document.getElementById('cartPanel').classList.remove('open');
-});
-
-function updateCart() {
-  const entries = Object.entries(cart);
-  const count = entries.reduce((s, [, v]) => s + v.qty, 0);
-  const total = entries.reduce((s, [, v]) => s + v.price * v.qty, 0);
-
-  document.getElementById('cartCount').textContent = count;
-  document.getElementById('cartBtnTotal').textContent = total;
-  document.getElementById('cartTotal').textContent = total;
-
-  const itemsBox = document.getElementById('cartItems');
-  if (entries.length === 0) {
-    itemsBox.innerHTML = '<p class="cart-empty">Корзина пока пуста</p>';
+document.body.addEventListener('click',e=>{
+  const btn=e.target.closest('[data-action]');
+  if(btn){
+    const name=btn.dataset.name, action=btn.dataset.action;
+    const dish=dishes.find(d=>d.name===name);
+    if(!dish) return;
+    if(action==='plus') addToCart(dish);
+    if(action==='minus') removeOne(name);
     return;
   }
-  itemsBox.innerHTML = entries.map(([name, item]) => `
+  const rm=e.target.closest('[data-remove]');
+  if(rm){removeAll(rm.dataset.remove);return;}
+  const plus=e.target.closest('[data-cart-plus]');
+  if(plus){const d=dishes.find(x=>x.name===plus.dataset.cartPlus);if(d)addToCart(d);return;}
+  const minus=e.target.closest('[data-cart-minus]');
+  if(minus){removeOne(minus.dataset.cartMinus);return;}
+});
+
+function addToCart(dish){
+  if(cart[dish.name])cart[dish.name].qty++;
+  else cart[dish.name]={price:dish.price,qty:1};
+  saveCart();updateCardUI(dish.name);updateCart();
+  showToast(`✓ «${dish.name}» добавлен`);bumpCartButton();
+}
+function removeOne(name){
+  if(!cart[name])return;
+  cart[name].qty--;
+  if(cart[name].qty<=0)delete cart[name];
+  saveCart();updateCardUI(name);updateCart();
+}
+function removeAll(name){delete cart[name];saveCart();updateCardUI(name);updateCart();}
+
+document.getElementById('cartBtn').addEventListener('click',()=>document.getElementById('cartPanel').classList.add('open'));
+document.getElementById('cartClose').addEventListener('click',()=>document.getElementById('cartPanel').classList.remove('open'));
+
+function updateCart(){
+  const entries=Object.entries(cart);
+  const count=entries.reduce((s,[,v])=>s+v.qty,0);
+  const total=entries.reduce((s,[,v])=>s+v.price*v.qty,0);
+  document.getElementById('cartCount').textContent=count;
+  document.getElementById('cartBtnTotal').textContent=total;
+  document.getElementById('cartTotal').textContent=total;
+  const box=document.getElementById('cartItems');
+  const chk=document.getElementById('cartCheckout');
+  if(entries.length===0){
+    box.innerHTML='<p class="cart-empty">Корзина пока пуста</p>';
+    chk.style.display='none';
+    return;
+  }
+  chk.style.display='block';
+  box.innerHTML=entries.map(([name,item])=>`
     <div class="cart-item">
       <div class="cart-item-top">
         <span class="cart-item-name">${name}</span>
@@ -747,100 +831,146 @@ function updateCart() {
           <span class="counter-value">${item.qty}</span>
           <button class="counter-btn" data-cart-plus="${cssEscape(name)}">+</button>
         </div>
-        <span class="cart-item-price">${item.price * item.qty} ₽</span>
+        <span class="cart-item-price">${item.price*item.qty} ₽</span>
       </div>
-    </div>
-  `).join('');
+    </div>`).join('');
 }
 
-document.getElementById('cartItems').addEventListener('click', e => {
-  const removeBtn = e.target.closest('[data-remove]');
-  if (removeBtn) { removeAll(removeBtn.dataset.remove); return; }
-  const plusBtn = e.target.closest('[data-cart-plus]');
-  if (plusBtn) {
-    const dish = dishes.find(d => d.name === plusBtn.dataset.cartPlus);
-    if (dish) addToCart(dish);
-    return;
+function setDelivery(type){
+  currentDelivery=type;userData.delivery=type;
+  document.querySelectorAll('.delivery-type-btn').forEach(b=>b.classList.toggle('active',b.dataset.delivery===type));
+  const hint=document.getElementById('deliveryHint');
+  const addr=document.getElementById('orderAddress');
+  if(type==='delivery'){
+    hint.textContent='Доставка по Актанышу — 250 ₽. Укажите адрес ниже.';
+    addr.classList.remove('hidden');
+  }else if(type==='pickup'){
+    hint.textContent='Заберёте сами: ул. Мусы Джалиля 7';
+    addr.classList.add('hidden');
+  }else{
+    hint.textContent='Покажите заказ официанту';
+    addr.classList.add('hidden');
   }
-  const minusBtn = e.target.closest('[data-cart-minus]');
-  if (minusBtn) { removeOne(minusBtn.dataset.cartMinus); return; }
+  saveUser();
+}
+document.querySelectorAll('.delivery-type-btn').forEach(b=>b.addEventListener('click',()=>setDelivery(b.dataset.delivery)));
+
+document.getElementById('checkoutBtn').addEventListener('click',()=>{
+  const entries=Object.entries(cart);
+  if(entries.length===0){showToast('Корзина пуста');return;}
+  const name=document.getElementById('orderName').value.trim();
+  const phone=document.getElementById('orderPhone').value.trim();
+  const address=document.getElementById('orderAddress').value.trim();
+  const comment=document.getElementById('orderComment').value.trim();
+  if(!name){showToast('Укажите имя');return;}
+  if(!phone){showToast('Укажите телефон');return;}
+  if(currentDelivery==='delivery'&&!address){showToast('Укажите адрес');return;}
+  saveUser();
+  const subtotal=entries.reduce((s,[,v])=>s+v.price*v.qty,0);
+  const deliveryCost=currentDelivery==='delivery'?250:0;
+  const total=subtotal+deliveryCost;
+  const itemsText=entries.map(([n,v])=>`• ${n} × ${v.qty} = ${v.price*v.qty} ₽`).join('\n');
+  const labels={pickup:'Самовывоз (ул. Мусы Джалиля 7)',delivery:'Доставка по Актанышу — 250 ₽',hall:'В зале'};
+  let text=`Здравствуйте! Хочу заказать в кафе «Ял»:\n\n${itemsText}\n\n━━━━━━━━━━━━━━━━\n`;
+  text+=`Товары: ${subtotal} ₽\n`;
+  if(deliveryCost) text+=`Доставка: ${deliveryCost} ₽\n`;
+  text+=`Итого: ${total} ₽\n\nСпособ: ${labels[currentDelivery]}\n`;
+  if(currentDelivery==='delivery'&&address) text+=`Адрес: ${address}\n`;
+  text+=`Имя: ${name}\nТелефон: ${phone}\n`;
+  if(comment) text+=`Комментарий: ${comment}\n`;
+  window._lastOrderText=text;
+  document.getElementById('orderText').textContent=text;
+  document.getElementById('orderModal').classList.add('open');
 });
+
+document.getElementById('callBtn').addEventListener('click',()=>{window.location.href='tel:+79273216167';clearCartAndClose();});
+document.getElementById('waBtn').addEventListener('click',()=>{
+  const text=window._lastOrderText||'';
+  window.open(`https://wa.me/79273216167?text=${encodeURIComponent(text)}`,'_blank');
+  setTimeout(clearCartAndClose,600);
+});
+document.getElementById('maxBtn').addEventListener('click',()=>{
+  const text=window._lastOrderText||'';
+  navigator.clipboard.writeText(text).catch(()=>{});
+  showToast('Текст скопирован — вставьте в MAX');
+  setTimeout(()=>window.open('https://max.ru/','_blank'),300);
+  setTimeout(clearCartAndClose,1200);
+});
+document.getElementById('closeOrderBtn').addEventListener('click',()=>document.getElementById('orderModal').classList.remove('open'));
+
+function clearCartAndClose(){
+  cart={};saveCart();dishes.forEach(d=>updateCardUI(d.name));updateCart();
+  document.getElementById('orderComment').value='';
+  document.getElementById('orderModal').classList.remove('open');
+  document.getElementById('cartPanel').classList.remove('open');
+}
 
 let toastTimer;
-function showToast(text) {
-  const toast = document.getElementById('toast');
-  toast.textContent = text;
-  toast.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toast.classList.remove('show'), 1600);
+function showToast(t){
+  const toast=document.getElementById('toast');
+  toast.textContent=t;toast.classList.add('show');
+  clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),1800);
+}
+function bumpCartButton(){
+  const b=document.getElementById('cartBtn');
+  b.classList.remove('bump');void b.offsetWidth;b.classList.add('bump');
 }
 
-function bumpCartButton() {
-  const btn = document.getElementById('cartBtn');
-  btn.classList.remove('bump');
-  void btn.offsetWidth;
-  btn.classList.add('bump');
-}
+document.querySelectorAll('.cat-btn').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.cat-btn').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  renderMenu(b.dataset.cat);
+}));
 
-document.getElementById('checkoutBtn').addEventListener('click', () => {
-  const entries = Object.entries(cart);
-  if (entries.length === 0) { alert('Корзина пуста'); return; }
-  const total = entries.reduce((s, [, v]) => s + v.price * v.qty, 0);
-  const list = entries.map(([n, v]) => `${n} × ${v.qty} = ${v.price * v.qty} ₽`).join('\n');
-  alert(`Ваш заказ:\n\n${list}\n\nИтого: ${total} ₽\n\nМы свяжемся с вами для подтверждения.`);
-  cart = {};
-  dishes.forEach(d => updateCardUI(d.name));
-  updateCart();
-  document.getElementById('cartPanel').classList.remove('open');
-});
-
-document.querySelectorAll('.cat-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderMenu(btn.dataset.cat);
-  });
-});
-
-document.getElementById('bookingForm').addEventListener('submit', e => {
+document.addEventListener('click',e=>{
+  const link=e.target.closest('a[href^="#"]');
+  if(!link) return;
+  const id=link.getAttribute('href');
+  if(id==='#') return;
+  const t=document.querySelector(id);
+  if(!t) return;
   e.preventDefault();
-  document.getElementById('bookingNote').textContent =
-    '✅ Спасибо! Мы свяжемся с вами для подтверждения брони.';
-  e.target.reset();
+  window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-80,behavior:'smooth'});
 });
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-(function createSpices() {
-  const hero = document.querySelector('.hero');
-  if (!hero) return;
-  const colors = ['#d9c89a', '#fff5c9', '#b6a882', '#e8d9ae'];
-  for (let i = 0; i < 18; i++) {
-    const s = document.createElement('div');
-    s.className = 'spice';
-    const size = 4 + Math.random() * 8;
-    s.style.width = size + 'px';
-    s.style.height = size + 'px';
-    s.style.left = Math.random() * 100 + '%';
-    s.style.top = (60 + Math.random() * 40) + '%';
-    s.style.background = `radial-gradient(circle, ${colors[Math.floor(Math.random()*colors.length)]} 0%, transparent 70%)`;
-    s.style.animationDuration = (8 + Math.random() * 12) + 's';
-    s.style.animationDelay = (Math.random() * 10) + 's';
+/* ===== Плавающие специи в hero ===== */
+(function createSpices(){
+  const hero=document.querySelector('.hero');
+  if(!hero) return;
+  const colors=['#d9c89a','#fff5c9','#b6a882','#e8d9ae'];
+  for(let i=0;i<18;i++){
+    const s=document.createElement('div');
+    s.className='spice';
+    const size=4+Math.random()*8;
+    s.style.width=size+'px';
+    s.style.height=size+'px';
+    s.style.left=Math.random()*100+'%';
+    s.style.top=(60+Math.random()*40)+'%';
+    s.style.background=`radial-gradient(circle, ${colors[Math.floor(Math.random()*colors.length)]} 0%, transparent 70%)`;
+    s.style.animationDuration=(8+Math.random()*12)+'s';
+    s.style.animationDelay=(Math.random()*10)+'s';
     hero.appendChild(s);
   }
 })();
 
+/* ===== Появление блоков при прокрутке ===== */
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
 renderMenu();
+renderMeatShop();
 updateCart();
+document.getElementById('orderName').value=userData.name||'';
+document.getElementById('orderPhone').value=userData.phone||'';
+document.getElementById('orderAddress').value=userData.address||'';
+setDelivery(currentDelivery);
 </script>
 </body>
 </html>
